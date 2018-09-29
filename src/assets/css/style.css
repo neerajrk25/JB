@@ -111,6 +111,11 @@ body {
     width: 60%;
 }
 
+.module.property-submit {
+    position: relative;
+    padding: 20px 0px 0px 0px;
+}
+
 /* page & post content */
 
 .content p {
@@ -376,12 +381,8 @@ select {
     background: white;
 }
 
-input[type="file"] {
-    background: white;
-    border: none;
-    padding: 5px 0px 5px 0px;
-    width: auto;
-    display: inline-block;
+.media-uploader-additional-img input[type="file"] {
+    display: none;
 }
 
 .chosen-container {
@@ -2400,6 +2401,12 @@ header {
     width: 100%;
 }
 
+.property-submit .form-nav {
+    margin-bottom: 10px;
+    display: inline-block;
+    width: 100%;
+}
+
 .form-nav-item {
     position: relative;
     float: left;
@@ -2424,6 +2431,7 @@ header {
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.07);
     position: relative;
     z-index: 10;
+    cursor: pointer;
 }
 
 .form-nav-item:after {
@@ -2449,6 +2457,8 @@ header {
 .form-nav-item.completed span {
     background: #4fba6f;
     color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: .5s;
 }
 
 .form-next,
@@ -2509,9 +2519,9 @@ header {
 
 .additional-img-container table {
     width: 100%;
-    border-bottom: 1px solid #e7e7e7;
+    border-bottom: 0;
     margin-top: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 22px;
 }
 
 .add-additional-img {

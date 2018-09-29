@@ -1,19 +1,87 @@
 /* You can add global styles to this file, and also import other style files */
+
 :host {
     display: block;
     overflow: hidden;
     height: 100vh;
-  }
-  :host main {
-    position: relative;
-  }
+}
 
-  :host router-outlet ~ * {
+:host main {
+    position: relative;
+}
+
+:host router-outlet~* {
     position: absolute;
     width: 100%;
     height: 100%;
-  }
-  /* main {
+}
+
+.form-block {
+    margin: 5px 0;
+}
+
+.form-block label {
+    position: absolute;
+    top: -17px;
+    font-size: 15px;
+}
+
+.media-uploader-additional-img {
+    position: relative;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.media-uploader-additional-img label {
+    position: relative;
+    padding: 15px;
+    border: 1px solid rgb(84, 187, 84);
+    border-radius: 5px;
+    margin-top: 5px;
+    width: auto;
+    top: 0;
+    font-size: 12px;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+    background: rgb(112, 214, 112);
+    color: #fff;
+    text-align: center;
+    display: inline-block;
+    transition: .3s;
+}
+
+.media-uploader-additional-img label .fa {
+    display: inline;
+    margin-right: 10px;
+}
+
+.media-uploader-additional-img label:hover {
+    background: rgb(98, 180, 98);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: .3s;
+}
+
+.files-list {
+    padding: 10px 0px;
+}
+
+.file-list table {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.file-list table tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}
+
+.file-list table tr td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
+
+/* main {
       position: relative;
     top: 90px;
 }

@@ -10,41 +10,49 @@
                     <div class="center">
                         <div class="form-nav">
                             <div class="form-nav-item"
-                                 [ngClass]="{'completed': addPropertyForm.valid}">
-                                <span *ngIf="true">
+                                 [ngClass]="{'completed': currentIndex == 1}">
+                                <span *ngIf="true"
+                                      (click)="onTabClick(1)">
                                     1
                                 </span>
-                                <span *ngIf="false">
+                                <span *ngIf="false"
+                                      (click)="onTabClick(1)">
                                     <i class="fa fa-check"></i>
                                 </span><br />
                                 Basic Info
                             </div>
                             <div class="form-nav-item"
-                                 [ngClass]="{'completed': addPropertyForm.valid}">
-                                <span *ngIf="true">
+                                 [ngClass]="{'completed': currentIndex == 2}">
+                                <span *ngIf="true"
+                                      (click)="onTabClick(2)">
                                     2
                                 </span>
-                                <span *ngIf="false">
+                                <span *ngIf="false"
+                                      (click)="onTabClick(2)">
                                     <i class="fa fa-check"></i>
                                 </span><br />
                                 Images
                             </div>
                             <div class="form-nav-item"
-                                 [ngClass]="{'completed': addPropertyForm.valid}">
-                                <span *ngIf="true">
+                                 [ngClass]="{'completed': currentIndex == 3}">
+                                <span *ngIf="true"
+                                      (click)="onTabClick(3)">
                                     3
                                 </span>
-                                <span *ngIf="false">
+                                <span *ngIf="false"
+                                      (click)="onTabClick(3)">
                                     <i class="fa fa-check"></i>
                                 </span><br />
                                 Location
                             </div>
                             <div class="form-nav-item"
-                                 [ngClass]="{'completed': addPropertyForm.valid}">
-                                <span *ngIf="true">
+                                 [ngClass]="{'completed': currentIndex == 4}">
+                                <span *ngIf="true"
+                                      (click)="onTabClick(4)">
                                     4
                                 </span>
-                                <span *ngIf="false">
+                                <span *ngIf="false"
+                                      (click)="onTabClick(4)">
                                     <i class="fa fa-check"></i>
                                 </span><br />
                                 Amenities
@@ -56,7 +64,8 @@
                     <div class="multi-page-form-content"
                          [ngClass]="{'active': currentIndex == 1}">
 
-                        <span class="button button-icon small right form-next"><i class="fa fa-angle-right"></i> Next</span>
+                        <span class="button button-icon small right form-next"
+                              (click)="onClickNext()"><i class="fa fa-angle-right"></i> Next</span>
 
                         <table class="property-submit-title">
                             <tr>
@@ -66,42 +75,52 @@
                                 </td>
                             </tr>
                         </table>
-
-                        <div class="form-block">
-                            <label>Property Title*</label>
-                            <input class="border required"
-                                   type="text"
-                                   name="property-title" />
-                        </div>
-
                         <div class="row">
-                            <div class="col-lg-6 col-md-6">
+                            <div class="col-sm-12">
                                 <div class="form-block">
-                                    <label>Price*</label>
+                                    <input class="border required"
+                                           type="text"
+                                           name="property-title" />
+                                    <label>Property Title</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3">
+                                <div class="form-block">
                                     <input class="border required"
                                            type="number"
                                            name="price" />
+                                    <label>Price</label>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6">
+                            <div class="col-lg-3 col-md-3">
                                 <div class="form-block">
-                                    <label>Price Postfix</label>
+                                    <input class="border required"
+                                           type="number"
+                                           name="beds" />
+                                    <label>Bedrooms</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <div class="form-block">
+                                    <input class="border required"
+                                           type="number"
+                                           name="people" />
+                                    <label>People</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <div class="form-block">
                                     <input class="border"
-                                           type="text"
-                                           name="price-post" />
+                                           type="number"
+                                           name="caretaker" />
+                                    <label>Care Taker</label>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4">
-                                <div class="form-block">
-                                    <label>Bedrooms</label>
-                                    <input class="border"
-                                           type="number"
-                                           name="beds" />
-                                </div>
-                            </div>
+                        <!-- <div class="row">
                             <div class="col-lg-4 col-md-4">
                                 <div class="form-block">
                                     <label>Bathrooms</label>
@@ -129,45 +148,45 @@
                                            name="area" />
                                 </div>
                             </div>
+                        </div> -->
+                        <div class="row">
                             <div class="col-lg-6 col-md-6">
+                                <div class="form-block border">
+                                    <select name="property-type"
+                                            class="border">
+                                        <option></option>
+                                        <option value="family-house">Family House</option>
+                                        <option value="apartment">Apartment</option>
+                                        <option value="condo">Condo</option>
+                                    </select>
+                                    <label>Property Type</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="form-block border">
+                                    <select name="property-type"
+                                            class="border">
+                                        <option></option>
+                                        <option value="for-rent">Active</option>
+                                        <option value="for-sale">Inactive</option>
+                                        <option value="sold">Booked</option>
+                                    </select>
+                                    <label>Property Status</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
                                 <div class="form-block">
-                                    <label>Area Postfix</label>
-                                    <input class="border"
-                                           type="text"
-                                           name="area-post" />
+                                    <textarea class="border"
+                                              name="description"></textarea>
+                                    <label>Description</label>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="form-block border">
-                            <label>Property Type</label>
-                            <select name="property-type"
-                                    class="border">
-                                <option></option>
-                                <option value="family-house">Family House</option>
-                                <option value="apartment">Apartment</option>
-                                <option value="condo">Condo</option>
-                            </select>
-                        </div>
-
-                        <div class="form-block border">
-                            <label>Property Status</label>
-                            <select name="property-type"
-                                    class="border">
-                                <option></option>
-                                <option value="for-rent">For Rent</option>
-                                <option value="for-sale">For Sale</option>
-                                <option value="sold">Sold</option>
-                            </select>
-                        </div>
-
-                        <div class="form-block">
-                            <label>Description</label>
-                            <textarea class="border"
-                                      name="description"></textarea>
-                        </div>
-
-                        <span class="button button-icon small right form-next"><i class="fa fa-angle-right"></i> Next</span>
+                        <span class="button button-icon small right form-next"
+                              (click)="onClickNext()"><i class="fa fa-angle-right"></i> Next</span>
                         <div class="clear"></div>
 
                     </div><!-- end basic info -->
@@ -175,8 +194,10 @@
                     <div class="multi-page-form-content"
                          [ngClass]="{'active': currentIndex == 2}">
 
-                        <span class="button button-icon small right form-next"><i class="fa fa-angle-right"></i> Next</span>
-                        <span class="button button-icon small right form-prev"><i class="fa fa-angle-left"></i>
+                        <span class="button button-icon small right form-next"
+                              (click)="onClickNext()"><i class="fa fa-angle-right"></i> Next</span>
+                        <span class="button button-icon small right form-prev"
+                              (click)="onClickPrevious()"><i class="fa fa-angle-left"></i>
                             Previous</span>
 
                         <table class="property-submit-title">
@@ -184,51 +205,98 @@
                                 <td><span class="property-submit-num">2</span></td>
                                 <td>
                                     <h4>Property Images</h4>
-                                    <p>Lorem molestie odio. Interdum et malesuada fames ac ante ipsum primis in
-                                        faucibus.</p>
                                 </td>
                             </tr>
                         </table>
-
-                        <div class="form-block">
-                            <label>Featured Image</label>
-                            <input type="file"
-                                   name="featured-img" />
-                        </div>
-                        <br />
-
-                        <div class="form-block gallery">
-                            <label>Gallery Images</label>
-                            <div class="additional-img-container">
-                                <table>
-                                    <tr>
-                                        <td>
-                                            <div class="media-uploader-additional-img">
-                                                <input type="file"
-                                                       class="additional_img"
-                                                       name="additional_img1"
-                                                       value="" />
-                                                <span class="delete-additional-img right"><i class="fa fa-trash"></i>
-                                                    Delete</span>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </table>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-block gallery">
+                                    <label>Gallery Images</label>
+                                    <div class="additional-img-container">
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <div class="media-uploader-additional-img">
+                                                        <label>
+                                                            <i class="fa fa-upload"></i> Select File(s) To Upload
+                                                            <input type="file"
+                                                                   class="additional_img"
+                                                                   name="additional_img1"
+                                                                   multiple="multiple"
+                                                                   (change)="onFileSelect($event)"
+                                                                   value="" />
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
-                            <span class="button small add-additional-img">Add Image</span>
                         </div>
-
-                        <span class="button button-icon small right form-next"><i class="fa fa-angle-right"></i> Next</span>
-                        <span class="button button-icon small right form-prev"><i class="fa fa-angle-left"></i>
-                            Previous</span>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-block">
+                                    <label>
+                                        Selected Files
+                                    </label>
+                                    <div class="file-list">
+                                        <span *ngIf="fileList.length == 0">
+                                            No Files Selected
+                                        </span>
+                                        <span *ngIf="fileList.length > 0"
+                                              style="display:block;">
+                                            <table style="width:100%">
+                                                <tbody>
+                                                    <tr *ngFor="let file of fileList; let index=index;">
+                                                        <td>
+                                                            {{file.name}}
+                                                        </td>
+                                                        <td>
+                                                            <img [src]="file.objectURL"
+                                                                 [width]="50" />
+                                                        </td>
+                                                        <td>
+                                                            <span title="Delete File"
+                                                                  (click)="deleteFile(file, index)"><i class="fa fa-trash"></i></span>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <!-- <ol type="1">
+                                                <li *ngFor="let file of fileList; let index=index;">
+                                                    {{file.name}}
+                                                    <img [src]="file.objectURL"
+                                                         [width]="50" />
+                                                </li>
+                                            </ol> -->
+                                            <!-- <div>
+                                                {{(index +1) + '. ' + file.name}}
+                                            </div> -->
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-offset-9 col-md-3">
+                                <span class="button button-icon small right form-next"
+                                      (click)="onClickNext()"><i class="fa fa-angle-right"></i> Next</span>
+                                <span class="button button-icon small right form-prev"
+                                      (click)="onClickPrevious()"><i class="fa fa-angle-left"></i>
+                                    Previous</span>
+                            </div>
+                        </div>
                         <div class="clear"></div>
                     </div><!-- end property images -->
 
                     <div class="multi-page-form-content"
                          [ngClass]="{'active': currentIndex == 3}">
 
-                        <span class="button button-icon small right form-next"><i class="fa fa-angle-right"></i> Next</span>
-                        <span class="button button-icon small right form-prev"><i class="fa fa-angle-left"></i>
+                        <span class="button button-icon small right form-next"
+                              (click)="onClickNext()"><i class="fa fa-angle-right"></i> Next</span>
+                        <span class="button button-icon small right form-prev"
+                              (click)="onClickPrevious()"><i class="fa fa-angle-left"></i>
                             Previous</span>
 
                         <table class="property-submit-title">
@@ -236,8 +304,6 @@
                                 <td><span class="property-submit-num">3</span></td>
                                 <td>
                                     <h4>Location</h4>
-                                    <p>Lorem molestie odio. Interdum et malesuada fames ac ante ipsum primis in
-                                        faucibus.</p>
                                 </td>
                             </tr>
                         </table>
@@ -270,16 +336,10 @@
                             </div>
                         </div><!-- end row -->
 
-                        <input size="25"
-                               id="pac-input"
-                               class="map-input controls"
-                               type="text"
-                               placeholder="Search"
-                               name="map_input">
-                        <div id="map-single"></div>
-
-                        <span class="button button-icon small right form-next"><i class="fa fa-angle-right"></i> Next</span>
-                        <span class="button button-icon small right form-prev"><i class="fa fa-angle-left"></i>
+                        <span class="button button-icon small right form-next"
+                              (click)="onClickNext()"><i class="fa fa-angle-right"></i> Next</span>
+                        <span class="button button-icon small right form-prev"
+                              (click)="onClickPrevious()"><i class="fa fa-angle-left"></i>
                             Previous</span>
                         <div class="clear"></div>
                     </div><!-- end location -->
@@ -287,8 +347,11 @@
                     <div class="multi-page-form-content"
                          [ngClass]="{'active': currentIndex == 4}">
 
-                        <span class="button button-icon small right form-next"><i class="fa fa-angle-right"></i> Next</span>
-                        <span class="button button-icon small right form-prev"><i class="fa fa-angle-left"></i>
+                        <span class="button button-icon small right form-next"
+                              (click)="onClickNext()"
+                              *ngIf="false"><i class="fa fa-angle-right"></i> Next</span>
+                        <span class="button button-icon small right form-prev"
+                              (click)="onClickPrevious()"><i class="fa fa-angle-left"></i>
                             Previous</span>
 
                         <table class="property-submit-title">
@@ -296,8 +359,6 @@
                                 <td><span class="property-submit-num">4</span></td>
                                 <td>
                                     <h4>Amenities</h4>
-                                    <p>Lorem molestie odio. Interdum et malesuada fames ac ante ipsum primis in
-                                        faucibus.</p>
                                 </td>
                             </tr>
                         </table>
@@ -350,8 +411,11 @@
                                        value="Toaster" />Toaster</label>
                         </div>
 
-                        <span class="button button-icon small right form-next"><i class="fa fa-angle-right"></i> Next</span>
-                        <span class="button button-icon small right form-prev"><i class="fa fa-angle-left"></i>
+                        <span class="button button-icon small right form-next"
+                              (click)="onClickNext()"
+                              *ngIf="false"><i class="fa fa-angle-right"></i> Next</span>
+                        <span class="button button-icon small right form-prev"
+                              (click)="onClickPrevious()"><i class="fa fa-angle-left"></i>
                             Previous</span>
 
                         <div class="center"><button type="button"
@@ -367,3 +431,18 @@
 
     </div><!-- end container -->
 </section>
+<app-jb-modal [header]="'Confirmation'">
+    Are you sure you want to delete the record?
+    <jb-footer>
+        <div class="row">
+            <div class="col-sm-12">
+                <span class="button button-icon small form-prev"
+                      (click)="removeFile()"><i class="fa fa-trash"></i>
+                    Delete</span>
+                <span class="button button-icon small form-next"
+                      (click)="hideModal()"><i class="fa fa-times"></i>
+                    Cancel</span>
+            </div>
+        </div>
+    </jb-footer>
+</app-jb-modal>

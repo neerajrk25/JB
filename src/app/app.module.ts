@@ -13,6 +13,7 @@ import { AdminPageComponent } from './components/admin-page/admin-page.component
 import { RouteGaurdService } from './service/route-gaurd.service';
 import { AddPropertyComponent } from './components/add-property/add-property.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SignInComponent } from './core/admin/sign-in/sign-in.component';
 const appRoutes: Routes = [
     { path: 'home', component: HomeComponent },
     {
@@ -22,6 +23,7 @@ const appRoutes: Routes = [
     },
     { path: 'searchproperty', component: PropertyListComponent },
     { path: 'viewproperty', component: PropertyDetailsComponent },
+    { path: 'signin', component: SignInComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', redirectTo: '/home' }
 ];
