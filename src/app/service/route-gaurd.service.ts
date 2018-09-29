@@ -9,6 +9,9 @@ export class RouteGaurdService implements CanActivate {
     constructor() { }
 
     canActivate() {
+        if (localStorage.getItem('token') == null) {
+
+        }
         return true;
     }
 }
