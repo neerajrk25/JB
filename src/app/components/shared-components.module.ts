@@ -6,10 +6,11 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from "@angular/common";
 import { PropertyDetailsComponent } from './property-details/property-details.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
+import { AddPropertyComponent } from './add-property/add-property.component';
 
 @NgModule({
     imports: [CommonModule, JumbleBieSharedModule],
-    declarations: [HomeComponent, PropertyListComponent, PropertyDetailsComponent, AdminPageComponent],
+    declarations: [HomeComponent, PropertyListComponent, PropertyDetailsComponent, AdminPageComponent, AddPropertyComponent],
     exports: [HomeComponent, PropertyListComponent, PropertyDetailsComponent]
 })
 export class SharedComponentsModule { }
