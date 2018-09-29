@@ -12,6 +12,7 @@ import { PropertyDetailsComponent } from './components/property-details/property
 import { AdminPageComponent } from './components/admin-page/admin-page.component';
 import { RouteGaurdService } from './service/route-gaurd.service';
 import { AddPropertyComponent } from './components/add-property/add-property.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 const appRoutes: Routes = [
     { path: 'home', component: HomeComponent },
     {
@@ -30,6 +31,8 @@ const appRoutes: Routes = [
         CoreModule,
         SharedComponentsModule,
         BrowserAnimationsModule,
+        ReactiveFormsModule,
+        FormsModule,
         RouterModule.forRoot(appRoutes, { useHash: true })
     ],
     declarations: [

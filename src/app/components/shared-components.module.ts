@@ -7,9 +7,10 @@ import { CommonModule } from "@angular/common";
 import { PropertyDetailsComponent } from './property-details/property-details.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AddPropertyComponent } from './add-property/add-property.component';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
-    imports: [CommonModule, JumbleBieSharedModule],
+    imports: [CommonModule, JumbleBieSharedModule, RouterModule, FormsModule, ReactiveFormsModule],
     declarations: [HomeComponent, PropertyListComponent, PropertyDetailsComponent, AdminPageComponent, AddPropertyComponent],
     exports: [HomeComponent, PropertyListComponent, PropertyDetailsComponent]
 })
