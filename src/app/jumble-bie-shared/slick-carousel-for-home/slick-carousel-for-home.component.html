@@ -1,0 +1,26 @@
+<section class="subheader subheader-slider subheader-slider-with-filter">
+    <div class="slider-wrap">
+        <!-- <div class="slider-nav slider-nav-simple-slider">
+            <span class="slider-prev">
+                <i class="fa fa-angle-left"></i>
+            </span>
+            <span class="slider-next">
+                <i class="fa fa-angle-right"></i>
+            </span>
+        </div> -->
+        <div class="slider slider-simple">
+            <div class="slide"
+                 *ngFor="let slide of slides">
+                <div class="img-overlay">
+                    <img [src]="slide.imagePath">
+                </div>
+                <div class="container">
+                    <h1></h1>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        <!-- end slider -->
+    </div>
+    <!-- end slider wrap -->
+</section>

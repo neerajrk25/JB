@@ -1,0 +1,27 @@
+#btn-go-to-top {
+    opacity: .5;
+    width:4%;
+    height:8%;
+    display: none;
+    position: fixed;
+    bottom: 5%;
+    right: 3%;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+     border-radius: 50%;
+    }
+    
+    #btn-go-to-top:hover {
+    opacity: 1;
+    }
+    .top {
+    transition: all 0.5s ease 0s;
+    -moz-transition: all 0.5s ease 0s;
+    -webkit-transition: all 0.5s ease 0s;
+    -o-transition: all 0.5s ease 0s;
+    }

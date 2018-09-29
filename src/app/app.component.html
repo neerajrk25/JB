@@ -1,0 +1,12 @@
+<app-header></app-header>
+<main [@fadeAnimation]="o.isActivated ? o.activatedRoute : ''">
+    <router-outlet #o="outlet"></router-outlet>
+</main>
+<app-footer></app-footer>
+<div id="btn-go-to-top"
+     class="text-center top">
+    <img src="uploads/Arrow.png"
+         style="margin: 7px;"
+         width="50%"
+         height="50%">
+</div>

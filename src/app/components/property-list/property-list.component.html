@@ -1,0 +1,120 @@
+<section class="module no-padding-bottom filter filter-with-slider">
+    <div class="container">
+        <div class="tabs">
+            <div class="filter-header"
+                 style="display: none;">
+                <ul>
+                    <li>
+                        <a href="#tabs-1">All</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- end filter header -->
+            <div id="tabs-1"
+                 class="ui-tabs-panel ui-corner-bottom ui-widget-content">
+                <div class="filter-item">
+                    <label>Property Type</label>
+                    <select name="property-type">
+                        <option value="">Any</option>
+                        <option value="family-house">Family House</option>
+                        <option value="apartment">Apartment</option>
+                        <option value="condo">Condo</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <label>Price</label>
+                    <price-slider></price-slider>
+                </div>
+                <div class="filter-item search-property-button">
+                    <br/>
+                    <input type="button"
+                           (click)="navigateTo()"
+                           class="button alt"
+                           value="Find Properties" />
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <!-- end tabs -->
+    </div>
+    <!-- end container -->
+</section>
+<section class="module no-padding-top no-padding-bottom">
+    <div class="container">
+        <div class="property-listing-header">
+            <span class="property-count left">{{propertyReponse.totalRecords}} properties found</span>
+            <form action="#"
+                  method="get"
+                  class="right">
+                <select name="sort_by"
+                        onchange="this.form.submit();">
+                    <option value="date_desc">New to Old</option>
+                    <option value="date_asc">Old to New</option>
+                    <option value="price_desc">Price (High to Low)</option>
+                    <option value="price_asc">Price (Low to High)</option>
+                </select>
+            </form>
+            <div class="clear"></div>
+        </div>
+        <!-- end property listing header -->
+
+        <div class="row">
+            <div class="col-lg-4 col-md-4"
+                 *ngFor="let property of properties;let i = index">
+                <div class="property shadow-hover"
+                     (click)="viewPropertyDetails(i)">
+                    <a class="property-img">
+                        <div class="img-fade"></div>
+                        <div class="property-price">{{property.price | currency:'INR':'symbol'}}</div>
+                        <div class="property-color-bar"></div>
+                        <img [src]="property.imgPath"
+                             alt="" />
+                    </a>
+                    <div class="property-content">
+                        <div class="property-title">
+                            <h4>
+                                <a>{{property.description}}</a>
+                            </h4>
+                            <p class="property-address">
+                                <i class="fa fa-map-marker icon"></i>{{property.address}}</p>
+                        </div>
+                        <table class="property-details">
+                            <tr>
+                                <td>
+                                    <i class="fa fa-bed"></i> {{property.noOfRooms}} Rooms</td>
+                                <td></td>
+                                <td class="text-right">
+                                    <i class="fa fa-users"></i> {{property.noOfPeople}} People</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- end row -->
+
+        <div class="pagination">
+            <div class="center">
+                <ul>
+                    <li>
+                        <a class="button small grey">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                    </li>
+                    <li *ngFor="let page of pages; let i = index;"
+                        [ngClass]="{'current': (currentPage == i)}"
+                        (click)="setPage(i)">
+                        <a class="button small grey">{{i + 1}}</a>
+                    </li>
+                    <li>
+                        <a class="button small grey">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</section>

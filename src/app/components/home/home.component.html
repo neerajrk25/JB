@@ -1,0 +1,47 @@
+<slick-carousel-for-home [slides]="slides"></slick-carousel-for-home>
+
+<section class="module no-padding-top filter filter-with-slider">
+    <div class="container">
+        <div class="tabs">
+
+            <div class="filter-header"
+                 style="display: none;">
+                <ul>
+                    <li>
+                        <a href="#tabs-1">All</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- end filter header -->
+
+            <div id="tabs-1"
+                 class="ui-tabs-panel ui-corner-bottom ui-widget-content">
+                <div class="filter-item">
+                    <label>Property Type</label>
+                    <select name="property-type">
+                        <option value="">Any</option>
+                        <option value="family-house">Family House</option>
+                        <option value="apartment">Apartment</option>
+                        <option value="condo">Condo</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <label>Price</label>
+                    <price-slider></price-slider>
+                </div>
+
+                <div class="filter-item search-property-button">
+                    <br/>
+                    <input type="button"
+                           (click)="navigateTo()"
+                           class="button alt"
+                           value="Find Properties" />
+                </div>
+                <div class="clear"></div>
+            </div>
+
+        </div>
+        <!-- end tabs -->
+    </div>
+    <!-- end container -->
+</section>
