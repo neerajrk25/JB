@@ -1,13 +1,50 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { JbModalService } from '../../service/jb-modal.service';
+import { JbNotifyService } from '../../service/jb-notify.service';
 
 class Amenities {
-    isPool = false;
-    isCareTake = false;
-    isAirConditioner = false;
-    isOven = false;
+    isPool = true;
+    isAirConditioner = true;
+    isOperativeKitchen = true;
+    isExtraMateress = true;
+    isTelevision = true;
+    isInverter = true;
+    isFridge = true;
+    isGeyser = true;
+    isChef = true;
+}
+
+class AddProperty {
+    "name" = "";
+    "address" = null;
+    "price" = null;
+    "rooms" = null;
+    "description" = null;
+    "capacity" = null;
+    "amenities" = new Amenities();
+    "commentsToAdd" = [];
+    "imagesToAdd" = [];
+    "status" = 'ACTIVE';
+    "type" = 'apartment';
+}
+
+class DropdownData {
+    "propertyTypes" = [
+        { label: 'Apartment', value: 'apartment' }
+    ];
+    "amenities" = [
+        { label: 'Swimming Pool', value: 'isPool' },
+        { label: 'Air Conditioning', value: 'isAirConditioner' },
+        { label: 'Operative Kitchen', value: 'isOperativeKitchen' },
+        { label: 'Extra Materess', value: 'isExtraMateress' },
+        { label: 'Television', value: 'isTelevision' },
+        { label: 'Inverter', value: 'isInverter' },
+        { label: 'Fridge', value: 'isFridge' },
+        { label: 'Geyser', value: 'isGeyser' },
+        { label: 'Chef', value: 'isChef' }
+    ]
 }
 
 @Component({
@@ -16,8 +53,9 @@ class Amenities {
     styleUrls: ['./add-property.component.css']
 })
 export class AddPropertyComponent implements OnInit {
-    currentIndex = 2;
-    addPropertyForm: FormGroup;
+    currentIndex = 1;
+    addPropertyForm = new AddProperty();
+    dropdownData = new DropdownData();
 
     fileList: File[] = [];
     isModalVisible: boolean = false;
@@ -30,13 +68,13 @@ export class AddPropertyComponent implements OnInit {
 
     constructor(
         private sanitizer: DomSanitizer,
-        private jbModalService: JbModalService
+        private jbModalService: JbModalService,
+        private jbNotifyService: JbNotifyService
     ) { }
 
     ngOnInit() {
-        this.addPropertyForm = new FormGroup({
-
-        });
+        console.log(this.addPropertyForm);
+        //this.jbNotifyService.alertMessage('I am ready to rock');
     }
 
     onClickNext() {
@@ -86,6 +124,11 @@ export class AddPropertyComponent implements OnInit {
 
     removeFile() {
         this.fileList.splice(this.selectedFile.index, 1);
+        this.jbNotifyService.successMessage('File deleted');
         this.hideModal();
+    }
+
+    submitProperty() {
+        console.log(this.addPropertyForm, this.fileList);
     }
 }

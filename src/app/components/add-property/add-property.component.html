@@ -4,8 +4,7 @@
         <div class="row">
             <div class="col-lg-10 col-lg-offset-1">
 
-                <form class="multi-page-form"
-                      [formGroup]="addPropertyForm">
+                <form class="multi-page-form">
 
                     <div class="center">
                         <div class="form-nav">
@@ -80,6 +79,7 @@
                                 <div class="form-block">
                                     <input class="border required"
                                            type="text"
+                                           [(ngModel)]="addPropertyForm.name"
                                            name="property-title" />
                                     <label>Property Title</label>
                                 </div>
@@ -90,42 +90,38 @@
                                 <div class="form-block">
                                     <input class="border required"
                                            type="text"
+                                           [(ngModel)]="addPropertyForm.address"
                                            name="address" />
-                                    <label>Address*</label>
+                                    <label>Address</label>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-3 col-md-3">
+                            <div class="col-lg-4 col-md-4">
                                 <div class="form-block">
                                     <input class="border required"
                                            type="number"
+                                           [(ngModel)]="addPropertyForm.price"
                                            name="price" />
                                     <label>Price</label>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-3">
+                            <div class="col-lg-4 col-md-4">
                                 <div class="form-block">
                                     <input class="border required"
                                            type="number"
+                                           [(ngModel)]="addPropertyForm.rooms"
                                            name="beds" />
                                     <label>Bedrooms</label>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-3">
+                            <div class="col-lg-4 col-md-4">
                                 <div class="form-block">
                                     <input class="border required"
                                            type="number"
+                                           [(ngModel)]="addPropertyForm.capacity"
                                            name="people" />
                                     <label>People</label>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3">
-                                <div class="form-block">
-                                    <input class="border"
-                                           type="number"
-                                           name="caretaker" />
-                                    <label>Care Taker</label>
                                 </div>
                             </div>
                         </div>
@@ -163,23 +159,23 @@
                             <div class="col-lg-6 col-md-6">
                                 <div class="form-block border">
                                     <select name="property-type"
+                                            [(ngModel)]="addPropertyForm.type"
                                             class="border">
-                                        <option></option>
-                                        <option value="family-house">Family House</option>
-                                        <option value="apartment">Apartment</option>
-                                        <option value="condo">Condo</option>
+                                        <option class='option'
+                                                *ngFor='let option of dropdownData.propertyTypes'
+                                                [value]="option.value">{{option.label}}</option>
                                     </select>
                                     <label>Property Type</label>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6">
                                 <div class="form-block border">
-                                    <select name="property-type"
+                                    <select name="property-status"
+                                            [(ngModel)]="addPropertyForm.status"
                                             class="border">
-                                        <option></option>
-                                        <option value="for-rent">Active</option>
-                                        <option value="for-sale">Inactive</option>
-                                        <option value="sold">Booked</option>
+                                        <option value="ACTIVE">Active</option>
+                                        <option value="INACTIVE">Inactive</option>
+                                        <option value="BOOKED">Booked</option>
                                     </select>
                                     <label>Property Status</label>
                                 </div>
@@ -189,6 +185,7 @@
                             <div class="col-sm-12">
                                 <div class="form-block">
                                     <textarea class="border"
+                                              [(ngModel)]="addPropertyForm.description"
                                               name="description"></textarea>
                                     <label>Description</label>
                                 </div>
@@ -318,7 +315,17 @@
                                 </td>
                             </tr>
                         </table>
-                        <div class="form-block amenities-list">
+                        <div class="row">
+                            <div class="col-md-3"
+                                 *ngFor="let amenity of dropdownData.amenities">
+                                <div class="form-block">
+                                    <input type="checkbox"
+                                           name="{{amenity.value}}"
+                                           [(ngModel)]="addPropertyForm.amenities[amenity.value]"> {{amenity.label}}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="form-block amenities-list">
                             <label><input type="checkbox"
                                        name="amenities[]"
                                        value="ac" />Air Conditioning</label>
@@ -364,7 +371,7 @@
                             <label><input type="checkbox"
                                        name="amenities[]"
                                        value="Toaster" />Toaster</label>
-                        </div>
+                        </div> -->
 
 
                         <span class="button button-icon small right form-next"
@@ -402,6 +409,7 @@
                             Previous</span>
 
                         <div class="center"><button type="button"
+                                    (click)="submitProperty()"
                                     class="button button-icon large alt"><i class="fa fa-angle-right"></i> Submit
                                 Property</button></div>
                         <div class="clear"></div>
