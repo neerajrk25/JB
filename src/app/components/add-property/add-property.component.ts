@@ -1,7 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { JbModalService } from '../../service/jb-modal.service';
+
+class Amenities {
+    isPool = false;
+    isCareTake = false;
+    isAirConditioner = false;
+    isOven = false;
+}
 
 @Component({
     selector: 'app-add-property',
@@ -15,7 +22,11 @@ export class AddPropertyComponent implements OnInit {
     fileList: File[] = [];
     isModalVisible: boolean = false;
 
-    selectedFile: any = {}
+    selectedFile: any = {};
+
+    amenities
+
+    @ViewChild('fileInput') fileInput: ElementRef;
 
     constructor(
         private sanitizer: DomSanitizer,
@@ -52,6 +63,7 @@ export class AddPropertyComponent implements OnInit {
                 this.fileList.push(files[i]);
             }
         }
+        this.fileInput.nativeElement.value = null;
     }
 
     validate(file: File): boolean {

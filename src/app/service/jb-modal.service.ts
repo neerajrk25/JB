@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 @Injectable({ providedIn: 'root' })
 export class JbModalService {
     private _isModalVisible: boolean = false;
+    dismissableMask: boolean = false;
     modalElement: any;
     spanElement: HTMLElement;
 
@@ -27,7 +28,7 @@ export class JbModalService {
     }
 
     windowClick(event) {
-        if (event.target == this.modalElement) {
+        if (event.target == this.modalElement && this.dismissableMask) {
             this.isModalVisible = false;
         }
     }
