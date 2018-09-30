@@ -4,12 +4,13 @@ import { PriceSliderComponent } from './price-slider/price-slider.component';
 import { SlickCarouselForHomeComponent } from './slick-carousel-for-home/slick-carousel-for-home.component';
 import { SlickCarouselForDetailComponent } from './slick-carousel-for-detail/slick-carousel-for-detail.component';
 import { JbModalComponent, JbFooter } from './jb-modal/jb-modal.component';
+import { JbNotifyComponent } from './jb-notify/jb-notify.component';
 
 @NgModule({
     imports: [
         CommonModule
     ],
-    declarations: [SlickCarouselForHomeComponent, PriceSliderComponent, SlickCarouselForDetailComponent, JbFooter, JbModalComponent],
+    declarations: [SlickCarouselForHomeComponent, PriceSliderComponent, SlickCarouselForDetailComponent, JbFooter, JbModalComponent, JbNotifyComponent],
     exports: [SlickCarouselForHomeComponent, PriceSliderComponent, SlickCarouselForDetailComponent, JbFooter, JbModalComponent]
 })
 export class JumbleBieSharedModule { }
