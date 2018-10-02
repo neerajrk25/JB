@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { JbModalService } from '../../service/jb-modal.service';
 import { JbNotifyService } from '../../service/jb-notify.service';
+import { PropertyService } from '../property.service';
+import { Subscription } from 'rxjs';
 
 class Amenities {
     isPool = true;
@@ -17,14 +18,14 @@ class Amenities {
 }
 
 class AddProperty {
-    "name" = "";
-    "address" = null;
-    "price" = null;
-    "rooms" = null;
-    "description" = null;
-    "capacity" = null;
+    "name" = "asdasd";
+    "address" = "asda";
+    "price" = 12;
+    "rooms" = 12;
+    "description" = "asd";
+    "capacity" = 123;
     "amenities" = new Amenities();
-    "commentsToAdd" = [];
+    "commentsToAdd" = [{ "rating": 1, "comment": "good" }, { "rating": 2, "comment": "Nice" }];
     "imagesToAdd" = [];
     "status" = 'ACTIVE';
     "type" = 'apartment';
@@ -56,6 +57,7 @@ export class AddPropertyComponent implements OnInit {
     currentIndex = 1;
     addPropertyForm = new AddProperty();
     dropdownData = new DropdownData();
+    addPropertySubscription: Subscription;
 
     fileList: File[] = [];
     isModalVisible: boolean = false;
@@ -69,11 +71,11 @@ export class AddPropertyComponent implements OnInit {
     constructor(
         private sanitizer: DomSanitizer,
         private jbModalService: JbModalService,
-        private jbNotifyService: JbNotifyService
+        private jbNotifyService: JbNotifyService,
+        private propertyService: PropertyService
     ) { }
 
     ngOnInit() {
-        console.log(this.addPropertyForm);
         //this.jbNotifyService.alertMessage('I am ready to rock');
     }
 
@@ -91,7 +93,7 @@ export class AddPropertyComponent implements OnInit {
 
     onFileSelect(event) {
         let files: any[] = event.dataTransfer ? event.dataTransfer.files : event.target.files;
-        this.fileList = [];
+        this.fileList = Object.assign([]);
         for (let i = 0; i < files.length; i++) {
             let file = files[i];
             if (this.validate(file)) {
@@ -129,6 +131,29 @@ export class AddPropertyComponent implements OnInit {
     }
 
     submitProperty() {
-        console.log(this.addPropertyForm, this.fileList);
+        //console.log(this.addPropertyForm, this.fileList);
+        let formToSend = new FormData();
+        //this.addPropertyForm.imagesToAdd = this.fileList;
+        for (let key in this.addPropertyForm) {
+            let value = this.addPropertyForm[key];
+            // if (typeof (this.addPropertyForm[key]) == 'object') {
+            //     value = JSON.stringify(this.addPropertyForm[key]);
+            // }
+            if (typeof (this.addPropertyForm[key]) == 'object' && key == 'imagesToAdd') {
+                for (let j = 0; j < this.fileList.length; j++) {
+                    if (j == 0) {
+                        formToSend.set('imagesToAdd', this.fileList[j]);
+                    } else {
+                        formToSend.append('imagesToAdd', this.fileList[j], this.fileList[j].name);
+                    }
+                }
+            } else if (typeof (this.addPropertyForm[key]) == 'object' && key !== 'imagesToAdd') {
+                formToSend.set(key, JSON.stringify(this.addPropertyForm[key]));
+            } else {
+                formToSend.set(key, value);
+
+            }
+        }
+        this.addPropertySubscription = this.propertyService.addProperty(formToSend).subscribe();
     }
 }

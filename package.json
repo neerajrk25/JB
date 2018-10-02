@@ -23,6 +23,7 @@
         "alertifyjs": "^1.11.1",
         "core-js": "^2.5.4",
         "font-awesome": "^4.7.0",
+        "ng-busy": "^6.1.2",
         "primeng": "^6.1.4",
         "rxjs": "^6.2.2",
         "zone.js": "^0.8.26"
