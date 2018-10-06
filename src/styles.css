@@ -81,6 +81,90 @@
     border-bottom: 1px solid #ddd;
 }
 
+.ng-busy-backdrop {
+    position: fixed !important;
+}
+
+.loader {
+    height: 100%;
+    background: url('assets/images/loader.gif') no-repeat center 50%;
+    background-size: 50px;
+    text-align: center;
+}
+
+.splash-screen {
+    background-color: rgb(220, 176, 255);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+}
+
+.splash-screen .splash-container {
+    padding-top: 250px;
+    width: 250px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.splash-screen .logo {
+    display: inline-block;
+    vertical-align: middle;
+    width: 300px;
+    height: 50px;
+    background: url("assets/images/loading_jb.gif") top left no-repeat;
+    background-size: 300px 50px;
+}
+
+.splash-screen .load-bar {
+    position: relative;
+    margin-top: 20px;
+    width: 100%;
+    height: 6px;
+    background-color: #ffffff;
+}
+
+.splash-screen .bar {
+    content: "";
+    display: inline;
+    position: absolute;
+    width: 0;
+    height: 100%;
+    left: 50%;
+    text-align: center;
+}
+
+.splash-screen .bar:nth-child(1) {
+    background-color: rgb(30, 159, 233);
+    animation: loading 3s linear infinite;
+}
+
+.splash-screen .bar:nth-child(2) {
+    background-color: #8BC34A;
+    animation: loading 3s linear 1s infinite;
+}
+
+.splash-screen .bar:nth-child(3) {
+    background-color: rgb(255, 226, 138);
+    animation: loading 3s linear 2s infinite;
+}
+
+@keyframes loading {
+    from {
+        left: 50%;
+        width: 0;
+        z-index: 100;
+    }
+    33.3333% {
+        left: 0;
+        width: 100%;
+        z-index: 10;
+    }
+    to {
+        left: 0;
+        width: 100%;
+    }
+}
+
 /* main {
       position: relative;
     top: 90px;

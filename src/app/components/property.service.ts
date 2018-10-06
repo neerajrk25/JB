@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 export class Property {
     isFeatured?: boolean;
     price: number;
@@ -117,7 +119,9 @@ export class PropertyService {
     }];
 
     propertyId: number;
-    constructor() { }
+    constructor(
+        private http: HttpClient
+    ) { }
 
     getPropertyList(pageNumber: number): PropertyResponse {
         let properties: Property[] = [];
@@ -138,5 +142,10 @@ export class PropertyService {
 
     getProperty(): Property {
         return this.properties[this.propertyId];
+    }
+
+    addProperty(addPropertyDTO) {
+        let url = `${environment.baseUrl}/property/addProperty`;
+        return this.http.post(url, addPropertyDTO);
     }
 }

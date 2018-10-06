@@ -1,5 +1,6 @@
 <section class="module property-submit">
-    <div class="container">
+    <div class="container"
+         [ngBusy]="[addPropertySubscription]">
 
         <div class="row">
             <div class="col-lg-10 col-lg-offset-1">
@@ -316,14 +317,14 @@
                             </tr>
                         </table>
                         <div class="row">
-                            <div class="col-md-3"
+                            <!-- <div class="col-md-3"
                                  *ngFor="let amenity of dropdownData.amenities">
                                 <div class="form-block">
                                     <input type="checkbox"
                                            name="{{amenity.value}}"
                                            [(ngModel)]="addPropertyForm.amenities[amenity.value]"> {{amenity.label}}
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                         <!-- <div class="form-block amenities-list">
                             <label><input type="checkbox"

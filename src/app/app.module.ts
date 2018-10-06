@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
@@ -35,6 +36,7 @@ const appRoutes: Routes = [
         BrowserAnimationsModule,
         ReactiveFormsModule,
         FormsModule,
+        HttpClientModule,
         RouterModule.forRoot(appRoutes, { useHash: true })
     ],
     declarations: [
