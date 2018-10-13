@@ -8,10 +8,11 @@ import { PropertyDetailsComponent } from './property-details/property-details.co
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AddPropertyComponent } from './add-property/add-property.component';
 import { FormsModule } from "@angular/forms";
+import { ReviewsComponent } from './reviews/reviews.component';
 
 @NgModule({
     imports: [CommonModule, JumbleBieSharedModule, RouterModule, FormsModule],
-    declarations: [HomeComponent, PropertyListComponent, PropertyDetailsComponent, AdminPageComponent, AddPropertyComponent],
+    declarations: [HomeComponent, PropertyListComponent, PropertyDetailsComponent, AdminPageComponent, AddPropertyComponent, ReviewsComponent],
     exports: [HomeComponent, PropertyListComponent, PropertyDetailsComponent]
 })
 export class SharedComponentsModule { }
