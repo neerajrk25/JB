@@ -46,14 +46,17 @@
              *ngIf="isAdmin">
             <div class="col-sm-12">
                 <span class="button right add-review-btn"
+                      title="Add More Reviews"
                       *ngIf="i == (reviewsForm.length-1)"
                       (click)="addMoreReviews()"><i class="fa fa-plus"></i>
                 </span>
                 <span class="button right clear-review-btn"
+                      title="Remove Review"
                       *ngIf="i > 0"
                       (click)="removeReview(i)"><i class="fa fa-minus"></i>
                 </span>
                 <span class="button right remove-review-btn"
+                      title="Clear Review"
                       (click)="clearReview(i)"><i class="fa fa-times"></i>
                 </span>
             </div>

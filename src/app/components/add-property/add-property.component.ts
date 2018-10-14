@@ -54,7 +54,7 @@ class DropdownData {
     styleUrls: ['./add-property.component.css']
 })
 export class AddPropertyComponent implements OnInit {
-    currentIndex = 4;
+    currentIndex = 1;
     addPropertyForm = new AddProperty();
     dropdownData = new DropdownData();
     addPropertySubscription: Subscription;
