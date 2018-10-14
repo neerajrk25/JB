@@ -4,11 +4,12 @@ import { environment } from '../../environments/environment';
 export class Property {
     isFeatured?: boolean;
     price: number;
-    noOfRooms: number;
-    noOfPeople: number;
-    description: string;
+    rooms: number;
+    capacity: number;
+    name: string;
     address: string;
-    imgPath: string;
+    images: Array<any>;
+    isBooked?: boolean;
 }
 
 export class PropertyResponse {
@@ -22,100 +23,104 @@ export class PropertyResponse {
 export class PropertyService {
     properties: Property[] = [{
         address: '123 Smith Dr, Annapolis, MD',
-        description: 'Modern Family Home',
+        name: 'Modern Family Home',
         isFeatured: false,
-        imgPath: 'assets/images/property-1.jpg',
+        images: [],
         price: 5000,
-        noOfRooms: 3,
-        noOfPeople: 12
+        rooms: 3,
+        isBooked: true,
+        capacity: 12
     }, {
         address: '123 Smith Dr, Annapolis, MD',
-        description: 'Modern Family Home',
+        name: 'Modern Family Home',
         isFeatured: false,
-        imgPath: 'assets/images/property-2.jpg',
+        images: [],
         price: 5000,
-        noOfRooms: 3,
-        noOfPeople: 12
+        rooms: 3,
+        capacity: 12
     }, {
         address: '123 Smith Dr, Annapolis, MD',
-        description: 'Modern Family Home',
+        name: 'Modern Family Home',
         isFeatured: false,
-        imgPath: 'assets/images/property-3.jpg',
+        images: [],
         price: 5000,
-        noOfRooms: 3,
-        noOfPeople: 12
+        rooms: 3,
+        isBooked: true,
+        capacity: 12
     }, {
         address: '123 Smith Dr, Annapolis, MD',
-        description: 'Modern Family Home',
+        name: 'Modern Family Home',
         isFeatured: false,
-        imgPath: 'assets/images/property-4.jpg',
+        images: [],
         price: 5000,
-        noOfRooms: 3,
-        noOfPeople: 12
+        rooms: 3,
+        isBooked: true,
+        capacity: 12
     }, {
         address: '123 Smith Dr, Annapolis, MD',
-        description: 'Modern Family Home',
+        name: 'Modern Family Home',
         isFeatured: true,
-        imgPath: 'assets/images/property-5.jpg',
+        images: [],
         price: 5000,
-        noOfRooms: 3,
-        noOfPeople: 12
+        rooms: 3,
+        capacity: 12
     }, {
         address: '123 Smith Dr, Annapolis, MD',
-        description: 'Modern Family Home',
+        name: 'Modern Family Home',
         isFeatured: false,
-        imgPath: 'assets/images/property-6.jpg',
+        images: [],
         price: 5000,
-        noOfRooms: 3,
-        noOfPeople: 12
+        rooms: 3,
+        capacity: 12
     }, {
         address: '123 Smith Dr, Annapolis, MD',
-        description: 'Modern Family Home',
+        name: 'Modern Family Home',
         isFeatured: true,
-        imgPath: 'assets/images/property-7.jpg',
+        images: [],
         price: 5000,
-        noOfRooms: 3,
-        noOfPeople: 12
+        rooms: 3,
+        capacity: 12
     }, {
         address: '123 Smith Dr, Annapolis, MD',
-        description: 'Modern Family Home',
+        name: 'Modern Family Home',
         isFeatured: false,
-        imgPath: 'assets/images/property-8.jpg',
+        images: [],
         price: 5000,
-        noOfRooms: 3,
-        noOfPeople: 12
+        isBooked: true,
+        rooms: 3,
+        capacity: 12
     }, {
         address: '123 Smith Dr, Annapolis, MD',
-        description: 'Modern Family Home',
+        name: 'Modern Family Home',
         isFeatured: false,
-        imgPath: 'assets/images/property-9.jpg',
+        images: [],
         price: 5000,
-        noOfRooms: 3,
-        noOfPeople: 12
+        rooms: 3,
+        capacity: 12
     }, {
         address: '123 Smith Dr, Annapolis, MD',
-        description: 'Modern Family Home',
+        name: 'Modern Family Home',
         isFeatured: false,
-        imgPath: 'assets/images/property-9.jpg',
+        images: [],
         price: 5000,
-        noOfRooms: 3,
-        noOfPeople: 12
+        rooms: 3,
+        capacity: 12
     }, {
         address: '123 Smith Dr, Annapolis, MD',
-        description: 'Modern Family Home',
+        name: 'Modern Family Home',
         isFeatured: false,
-        imgPath: 'assets/images/property-9.jpg',
+        images: [],
         price: 5000,
-        noOfRooms: 3,
-        noOfPeople: 12
+        rooms: 3,
+        capacity: 12
     }, {
         address: '123 Smith Dr, Annapolis, MD',
-        description: 'Modern Family Home',
+        name: 'Modern Family Home',
         isFeatured: false,
-        imgPath: 'assets/images/property-9.jpg',
+        images: [],
         price: 5000,
-        noOfRooms: 3,
-        noOfPeople: 12
+        rooms: 3,
+        capacity: 12
     }];
 
     propertyId: number;

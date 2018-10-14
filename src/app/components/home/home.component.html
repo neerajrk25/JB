@@ -27,11 +27,11 @@
                 </div>
                 <div class="filter-item">
                     <label>Price</label>
-                    <price-slider></price-slider>
+                    <price-slider [(ngModel)]="filter.price"></price-slider>
                 </div>
 
                 <div class="filter-item search-property-button">
-                    <br/>
+                    <br />
                     <input type="button"
                            (click)="navigateTo()"
                            class="button alt"

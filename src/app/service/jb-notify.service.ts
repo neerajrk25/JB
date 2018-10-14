@@ -71,6 +71,34 @@ export class JbNotifyService {
         );
     }
 
+    warningMessage(message: string, onClose?: Function, options?: NotifyDefaultOptions) {
+        let overridenOptions = this.setOptions(options);
+        alertify.set('notifier', 'position', overridenOptions.notifier.position);
+        alertify.notify(message,
+            'warning',
+            overridenOptions.notifier.delay,
+            () => {
+                if (onClose) {
+                    onClose();
+                }
+            }
+        );
+    }
+
+    errorMessage(message: string, onClose?: Function, options?: NotifyDefaultOptions) {
+        let overridenOptions = this.setOptions(options);
+        alertify.set('notifier', 'position', overridenOptions.notifier.position);
+        alertify.notify(message,
+            'error',
+            overridenOptions.notifier.delay,
+            () => {
+                if (onClose) {
+                    onClose();
+                }
+            }
+        );
+    }
+
     alertMessage(message: string, onSuccess?: Function, options?: Glossary) {
         let overridenOptions = this.setOptions(options);
         alertify.alert().setting({

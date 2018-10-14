@@ -401,18 +401,26 @@
                                 </td>
                             </tr>
                         </table>
+                        <app-reviews></app-reviews>
 
+                        <div class="row">
+                            <div class="col-sm-12 col-md-9 center">
+                                <button type="button"
+                                        (click)="submitProperty()"
+                                        class="button submit-btn button-icon large alt"><i class="fa fa-angle-right"></i>
+                                    Submit
+                                    Property</button>
+                            </div>
+                            <div class="col-sm-12 col-md-3">
+                                <span class="button button-icon small right form-prev"
+                                      (click)="onClickPrevious()"><i class="fa fa-angle-left"></i>
+                                    Previous</span>
+                            </div>
+                        </div>
                         <span class="button button-icon small right form-next"
                               (click)="onClickNext()"
                               *ngIf="false"><i class="fa fa-angle-right"></i> Next</span>
-                        <span class="button button-icon small right form-prev"
-                              (click)="onClickPrevious()"><i class="fa fa-angle-left"></i>
-                            Previous</span>
 
-                        <div class="center"><button type="button"
-                                    (click)="submitProperty()"
-                                    class="button button-icon large alt"><i class="fa fa-angle-right"></i> Submit
-                                Property</button></div>
                         <div class="clear"></div>
                     </div><!-- end amenities -->
 

@@ -23,10 +23,10 @@
                 </div>
                 <div class="filter-item">
                     <label>Price</label>
-                    <price-slider></price-slider>
+                    <price-slider [(ngModel)]="filter.price"></price-slider>
                 </div>
                 <div class="filter-item search-property-button">
-                    <br/>
+                    <br />
                     <input type="button"
                            (click)="navigateTo()"
                            class="button alt"
@@ -42,7 +42,8 @@
 <section class="module no-padding-top no-padding-bottom">
     <div class="container">
         <div class="property-listing-header">
-            <span class="property-count left">{{propertyReponse.totalRecords}} properties found</span>
+            <span class="property-count left">{{properties.length ? propertyReponse.totalRecords : '0'}} properties
+                found</span>
             <form action="#"
                   method="get"
                   class="right">
@@ -58,16 +59,20 @@
         </div>
         <!-- end property listing header -->
 
-        <div class="row">
+        <div class="row"
+             *ngIf="properties.length; else noRecordsMsg">
             <div class="col-lg-4 col-md-4"
-                 *ngFor="let property of properties;let i = index">
+                 *ngFor="let property of properties;let i = index"
+                 [ngClass]="{'cursor-not-allowed': property.isBooked}">
                 <div class="property shadow-hover"
+                     [ngClass]="{'property-booked': property.isBooked}"
                      (click)="viewPropertyDetails(i)">
                     <a class="property-img">
                         <div class="img-fade"></div>
                         <div class="property-price">{{property.price | currency:'INR':'symbol'}}</div>
                         <div class="property-color-bar"></div>
-                        <img [src]="property.imgPath"
+                        <img [src]="property.images.length ? property.images[0] : 'assets/images/1000x560.png'"
+                             alt="No Image Available"
                              alt="" />
                     </a>
                     <div class="property-content">
@@ -81,20 +86,30 @@
                         <table class="property-details">
                             <tr>
                                 <td>
-                                    <i class="fa fa-bed"></i> {{property.noOfRooms}} Rooms</td>
+                                    <i class="fa fa-bed"></i> {{property.rooms}} Rooms</td>
                                 <td></td>
                                 <td class="text-right">
-                                    <i class="fa fa-users"></i> {{property.noOfPeople}} People</td>
+                                    <i class="fa fa-users"></i> {{property.capacity}} People</td>
                             </tr>
                         </table>
                     </div>
                 </div>
+                <div class="booked-watermark"
+                     *ngIf="property.isBooked">BOOKED</div>
             </div>
 
         </div>
+        <ng-template #noRecordsMsg>
+            <div class="no-property-found center">
+                <div class="col-sm-12">
+                    No properties found
+                </div>
+            </div>
+        </ng-template>
         <!-- end row -->
 
-        <div class="pagination">
+        <div class="pagination"
+             *ngIf="properties.length">
             <div class="center">
                 <ul>
                     <li>
@@ -103,8 +118,8 @@
                         </a>
                     </li>
                     <li *ngFor="let page of pages; let i = index;"
-                        [ngClass]="{'current': (currentPage == i)}"
-                        (click)="setPage(i)">
+                        [ngClass]="{'current': ((currentPage-1) == i)}"
+                        (click)="setPage(i+1)">
                         <a class="button small grey">{{i + 1}}</a>
                     </li>
                     <li>

@@ -22,8 +22,14 @@
 
 .form-block label {
     position: absolute;
-    top: -17px;
+    top: -15px;
     font-size: 15px;
+}
+
+@media only screen and (max-width: 767px) {
+    .form-block label {
+        top: -19px;
+    }
 }
 
 .media-uploader-additional-img {

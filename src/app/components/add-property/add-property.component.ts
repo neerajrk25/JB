@@ -54,7 +54,7 @@ class DropdownData {
     styleUrls: ['./add-property.component.css']
 })
 export class AddPropertyComponent implements OnInit {
-    currentIndex = 1;
+    currentIndex = 4;
     addPropertyForm = new AddProperty();
     dropdownData = new DropdownData();
     addPropertySubscription: Subscription;
@@ -93,7 +93,7 @@ export class AddPropertyComponent implements OnInit {
 
     onFileSelect(event) {
         let files: any[] = event.dataTransfer ? event.dataTransfer.files : event.target.files;
-        this.fileList = Object.assign([]);
+        //this.fileList = Object.assign([]);
         for (let i = 0; i < files.length; i++) {
             let file = files[i];
             if (this.validate(file)) {
@@ -101,13 +101,16 @@ export class AddPropertyComponent implements OnInit {
                     file.objectURL = this.sanitizer.bypassSecurityTrustUrl((window.URL.createObjectURL(files[i])));
                 }
                 this.fileList.push(files[i]);
+            } else {
+                let warningMessage = `${file.name} is not a valid file!`;
+                this.jbNotifyService.warningMessage(warningMessage);
             }
         }
         this.fileInput.nativeElement.value = null;
     }
 
     validate(file: File): boolean {
-        return true;
+        return file.type.indexOf('image') !== -1;
     }
 
     isImage(file: File): boolean {
@@ -154,6 +157,8 @@ export class AddPropertyComponent implements OnInit {
 
             }
         }
-        this.addPropertySubscription = this.propertyService.addProperty(formToSend).subscribe();
+        this.addPropertySubscription = this.propertyService.addProperty(formToSend).subscribe(() => {
+        }, () => {
+        });
     }
 }

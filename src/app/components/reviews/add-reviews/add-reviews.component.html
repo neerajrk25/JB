@@ -1,3 +1,74 @@
-<p>
-  add-reviews works!
-</p>
+<div class="add-review">
+    <div class="row">
+        <hr *ngIf="showDivider">
+        <div class="col-sm-12 title">
+            <h4 *ngIf="isAdmin; else forUser">Add Review(s)</h4>
+            <ng-template #forUser>
+                <h4>Add Review</h4>
+            </ng-template>
+        </div>
+    </div>
+    <div *ngFor="let review of reviewsForm;let i=index;">
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <div class="form-block">
+                    <input class="border required"
+                           type="text"
+                           [(ngModel)]="review.name"
+                           name="property-title" />
+                    <label>Name</label>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6"
+                 style="padding-bottom: 5px;">
+                <div class="form-block">
+                    <p-rating [cancel]="false"
+                              [(ngModel)]="review.rating"></p-rating>
+                    <label>Rating</label>
+                    <!-- <input class="border required"
+                                       type="text"
+                                       name="property-title" />
+                                <label>Rating</label> -->
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-block">
+                    <textarea class="border review-field"
+                              [(ngModel)]="review.comment"
+                              name="comment"></textarea>
+                    <label>Review</label>
+                </div>
+            </div>
+        </div>
+        <div class="row"
+             *ngIf="isAdmin">
+            <div class="col-sm-12">
+                <span class="button right add-review-btn"
+                      *ngIf="i == (reviewsForm.length-1)"
+                      (click)="addMoreReviews()"><i class="fa fa-plus"></i>
+                </span>
+                <span class="button right clear-review-btn"
+                      *ngIf="i > 0"
+                      (click)="removeReview(i)"><i class="fa fa-minus"></i>
+                </span>
+                <span class="button right remove-review-btn"
+                      (click)="clearReview(i)"><i class="fa fa-times"></i>
+                </span>
+            </div>
+        </div>
+        <div class="row"
+             *ngIf="showAddBtn">
+            <div class="col-sm-12">
+                <span class="button right add-review-btn"
+                      *ngIf="i == (reviewsForm.length-1)"
+                      (click)="addCustomerReview()"><i class="fa fa-comment"></i> Review
+                </span>
+                <span class="button right remove-review-btn"
+                      (click)="clearReview(i)"><i class="fa fa-times"></i> Clear
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

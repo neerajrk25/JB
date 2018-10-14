@@ -16,6 +16,11 @@ export class PropertyDetailsComponent implements OnInit {
         { imagePath: 'assets/images/property-6.jpg' },
         { imagePath: 'assets/images/property-7.jpg' }
     ];
+
+    rating = 3;
+
+    ratingArr = new Array(5);
+
     constructor() { }
 
     ngOnInit() {

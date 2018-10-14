@@ -1,3 +1,27 @@
-<p>
-  reviews works!
-</p>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-block">
+            <div class="row grid-blog">
+                <div class="review-details-content"
+                     *ngFor="let review of reviews; let i=index;">
+                    <div class="review review-creative"
+                         [ngStyle]="{'margin-bottom': (i == (reviews.length-1)) ? 0 : '15px'}">
+                        <div class="content review-content">
+                            <ul class="review-details">
+                                <li class="review-detail-md-width review-detail-sm-width">{{review.reviwerName}}</li>
+                                <!-- <i class="fa fa-comment-o icon"></i> -->
+                                <li class="review-detail-md-width review-detail-sm-width">
+                                    <i class="fa icon"
+                                       *ngFor="let item of getRatingList(review.rating);let i=index;"
+                                       [ngClass]="{'fa-star': getRatingList(review.rating)[i], 'fa-star-o': !(getRatingList(review.rating)[i])}"></i>
+                                </li>
+                            </ul>
+                            <p>{{review.comment}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <jb-add-reviews [showDivider]="true"></jb-add-reviews>
+        </div>
+    </div>
+</div>

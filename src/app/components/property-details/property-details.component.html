@@ -62,11 +62,11 @@
             </div>
             <!-- end col -->
 
-            <div class="col-lg-4 col-md-4 sidebar sidebar-property-single">
+            <div class="col-lg-4 col-md-4 sidebar abc sidebar-property-single">
 
-                <div class="widget widget-sidebar recent-posts">
-                    <h4>
-                        <span>Recent Reviews</span>
+                <div class="widget recent-posts">
+                    <h4 style="margin-bottom: 10px;">
+                        <span style="margin-bottom:0;">Recent Reviews</span>
                         <img src="assets/images/divider-half.png"
                              alt="" />
                     </h4>
@@ -77,7 +77,24 @@
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <p>Nice home, luxuary rooms, good to stay</p>
                                     <p>
-                                        <i class="fa fa-user"></i> Feb, 18th 2017</p>
+                                        <span>
+                                            <span *ngFor="let item of ratingArr; let i = index;">
+                                                <i class="fa fa-star"
+                                                   *ngIf="((i+1) <= rating); else emptyStar"></i>
+                                                <ng-template #emptyStar>
+                                                    <i class="fa fa-star-o"></i>
+                                                </ng-template>
+                                            </span>
+                                            <!-- <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-o"></i> -->
+                                        </span>
+                                    </p>
+                                    <p>
+                                        <span>
+                                            <i class="fa fa-user"></i> Feb, 18th 2017
+                                        </span>
+                                    </p>
+
                                 </div>
                             </div>
                         </div>
@@ -87,7 +104,23 @@
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <p>Nice home, luxuary rooms, good to stay</p>
                                     <p>
-                                        <i class="fa fa-user"></i> Feb, 18th 2017</p>
+                                        <span>
+                                            <span *ngFor="let item of ratingArr; let i = index;">
+                                                <i class="fa fa-star"
+                                                   *ngIf="((i+1) <= rating); else emptyStar"></i>
+                                                <ng-template #emptyStar>
+                                                    <i class="fa fa-star-o"></i>
+                                                </ng-template>
+                                            </span>
+                                            <!-- <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-o"></i> -->
+                                        </span>
+                                    </p>
+                                    <p>
+                                        <span>
+                                            <i class="fa fa-user"></i> Feb, 18th 2017
+                                        </span>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -97,7 +130,23 @@
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <p>Nice home, luxuary rooms, good to stay</p>
                                     <p>
-                                        <i class="fa fa-user"></i> Feb, 18th 2017</p>
+                                        <span>
+                                            <span *ngFor="let item of ratingArr; let i = index;">
+                                                <i class="fa fa-star"
+                                                   *ngIf="((i+1) <= rating); else emptyStar"></i>
+                                                <ng-template #emptyStar>
+                                                    <i class="fa fa-star-o"></i>
+                                                </ng-template>
+                                            </span>
+                                            <!-- <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-o"></i> -->
+                                        </span>
+                                    </p>
+                                    <p>
+                                        <span>
+                                            <i class="fa fa-user"></i> Feb, 18th 2017
+                                        </span>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -127,25 +176,39 @@
                              alt="" />
                         <div class="divider-fade"></div>
                     </h4>
-                    <p>Ut euismod ultricies sollicitudin. Curabitur sed dapibus nulla. Nulla eget iaculis lectus. Mauris ac
-                        maximus neque. Nam in mauris quis libero sodales eleifend. Morbi varius, nulla sit amet rutrum elementum,
-                        est elit finibus tellus, ut tristique elit risus at metus. Sed fermentum, lorem vitae efficitur imperdiet,
+                    <p>Ut euismod ultricies sollicitudin. Curabitur sed dapibus nulla. Nulla eget iaculis lectus.
+                        Mauris ac
+                        maximus neque. Nam in mauris quis libero sodales eleifend. Morbi varius, nulla sit amet rutrum
+                        elementum,
+                        est elit finibus tellus, ut tristique elit risus at metus. Sed fermentum, lorem vitae efficitur
+                        imperdiet,
                         neque velit tristique turpis, et iaculis mi tortor finibus turpis.
                     </p>
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis
-                        pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, et pulvinar nisi
-                        tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis
-                        massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra a. Aliquam pellentesque
-                        nibh et nibh feugiat gravida. Maecenas ultricies, diam vitae semper placerat, velit risus accumsan
-                        nisl, eget tempor lacus est vel nunc. Proin accumsan elit sed neque euismod fringilla. Curabitur
-                        lobortis nunc velit, et fermentum urna dapibus non. Vivamus magna lorem, elementum id gravida ac,
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla
+                        finibus lobortis
+                        pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, et pulvinar
+                        nisi
+                        tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor
+                        iaculis
+                        massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra a. Aliquam
+                        pellentesque
+                        nibh et nibh feugiat gravida. Maecenas ultricies, diam vitae semper placerat, velit risus
+                        accumsan
+                        nisl, eget tempor lacus est vel nunc. Proin accumsan elit sed neque euismod fringilla.
+                        Curabitur
+                        lobortis nunc velit, et fermentum urna dapibus non. Vivamus magna lorem, elementum id gravida
+                        ac,
                         laoreet tristique augue. Maecenas dictum lacus eu nunc porttitor, ut hendrerit arcu efficitur.</p>
 
                 </div>
                 <!-- end description -->
 
             </div>
+        </div>
+        <div class="widget property-single-item property-description content">
+            <jb-add-reviews [isAdmin]="false"
+                            [showAddBtn]="true"></jb-add-reviews>
         </div>
     </div>
     <!-- end container -->

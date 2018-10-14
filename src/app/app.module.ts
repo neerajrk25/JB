@@ -24,6 +24,7 @@ const appRoutes: Routes = [
     },
     { path: 'searchproperty', component: PropertyListComponent },
     { path: 'viewproperty', component: PropertyDetailsComponent },
+    { path: 'viewproperty/:propertyId', component: PropertyDetailsComponent },
     { path: 'signin', component: SignInComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', redirectTo: '/home' }

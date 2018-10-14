@@ -1678,6 +1678,25 @@ header {
     width: 100%;
 }
 
+.property-booked {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.cursor-not-allowed {
+    cursor: not-allowed;
+}
+
+.booked-watermark {
+    position: absolute;
+    top: 40%;
+    left: 20%;
+    font-size: 57px;
+    transform: rotateZ(-44deg);
+    color: #f97a7a;
+    font-weight: 600;
+}
+
 .property-img {
     position: relative;
     display: block;
@@ -2372,6 +2391,23 @@ header {
     z-index: 100;
 }
 
+.no-property-found {
+    background: #fff;
+    padding: 15px 0;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.no-property-found:after {
+    clear: both;
+}
+
+.no-property-found:after,
+.no-property-found:before {
+    display: table;
+    content: " ";
+}
+
 .widget.property-single-item h4 {
     margin-bottom: 10px;
 }
@@ -2799,17 +2835,17 @@ header {
 /* 04 BLOG
 /*====================================================================================*/
 
-.blog-post {
+.review {
     background: white;
     margin-bottom: 40px;
 }
 
-.blog-post-img {
+.review-img {
     position: relative;
     display: block;
 }
 
-.blog-post-date {
+.review-date {
     position: absolute;
     background: url(../assets/images/hexagon.png) no-repeat;
     line-height: 1.1;
@@ -2821,56 +2857,125 @@ header {
     text-align: center;
 }
 
-.blog-post-date span {
+.review-date span {
     font-weight: bold;
     font-size: 22px;
     display: block;
 }
 
-.blog-post-img .img-fade {
+.review-img .img-fade {
     opacity: 0.7;
 }
 
-.blog-post-img img {
+.review-img img {
     max-width: 100%;
     height: auto;
 }
 
-.blog-post-details {
-    margin-bottom: 20px;
-    padding: 10px 0px 15px 0px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+.review-details {
+    padding: 0px 0px 0px 0px;
+    margin-bottom: 0;
 }
 
-.blog-post-details li {
-    margin-right: 13px;
+.review-details li {
+    margin-right: 12px;
+    margin-left: 0px !important;
     font-weight: 600;
     font-size: 13px;
     color: #9eaab2;
     list-style: none !important;
-    display: inline;
+    display: inline-block;
 }
 
-.blog-post-content {
-    padding: 5%;
+/* .review-details .review-detail-sm-width {
+    width: 50%;
 }
 
-.blog-post-content h3 a {
+@media (min-width: 992px) {
+    .review-details .review-detail-md-width {
+        width: 25%;
+    }
+} */
+
+@media (min-width: 992px) {
+    .review-details-content {
+        width: 50%;
+        display: inline-flex;
+    }
+}
+
+.review-details .fa-star,
+.review-details .fa-star-o {
+    color: #18af16;
+}
+
+.review-details li:nth-child(1) {
+    color: #ef8f2c;
+}
+
+.review-content {
+    padding: 15px;
+}
+
+.review-content p {
+    margin-bottom: 0;
+}
+
+.review-content h3 a {
     font-weight: 100;
     color: #3a464e;
 }
 
-.blog-post-content h3 a:hover {
+.review-content h3 a:hover {
     color: #59aee9;
 }
 
-.blog-post-creative {
+.review-creative {
     margin-bottom: 30px;
+    /* box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15); */
+    transition: all 0.4s linear;
 }
 
-.blog-post-creative h3 {
+.review-creative:hover {
+    box-shadow: 0px 10px 12px rgba(0, 0, 0, 0.15)
+}
+
+.review-creative h3 {
     font-size: 23px;
     margin-top: 15px;
+}
+
+.add-review hr {
+    margin: 10px 0;
+}
+
+.add-review .title {
+    padding-bottom: 20px;
+}
+
+.add-review .review-field {
+    height: auto;
+    margin-bottom: 0px;
+}
+
+.add-review .add-review-btn {
+    padding: 6px 15px 4px 15px;
+}
+
+.add-review .remove-review-btn {
+    padding: 6px 15px 4px 15px;
+    margin-right: 5px;
+}
+
+.add-review .clear-review-btn {
+    padding: 6px 15px 4px 15px;
+    margin-right: 5px;
+}
+
+@media only screen and (max-width: 767px) {
+    .add-review {
+        margin-bottom: 10px;
+    }
 }
 
 .img-overlay {
@@ -2911,21 +3016,21 @@ header {
 
 /** BLOG SINGLE **/
 
-.blog-post-share .social-icons.circle {
+.review-share .social-icons.circle {
     margin-top: -3px;
 }
 
-.blog-post-share .social-icons.circle li {
+.review-share .social-icons.circle li {
     padding: 0;
 }
 
-.blog-post-share .social-icons li a {
+.review-share .social-icons li a {
     border-color: #9eaab2;
     color: #9eaab2;
 }
 
 .comment-list,
-.blog-post-related {
+.review-related {
     margin-bottom: 50px;
 }
 
@@ -3061,7 +3166,8 @@ header {
 }
 
 .widget .recent-property {
-    margin-bottom: 20px;
+    margin-bottom: 17px;
+    border-bottom: 1px dashed #cccccc;
 }
 
 .widget .recent-property img {
