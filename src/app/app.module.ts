@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
@@ -15,6 +15,7 @@ import { RouteGaurdService } from './service/route-gaurd.service';
 import { AddPropertyComponent } from './components/add-property/add-property.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignInComponent } from './core/admin/sign-in/sign-in.component';
+import { HttpInterceptorService } from './service/http-interceptor.service';
 const appRoutes: Routes = [
     { path: 'home', component: HomeComponent },
     {
@@ -44,7 +45,9 @@ const appRoutes: Routes = [
         AppComponent
     ],
     providers: [
-        RouteGaurdService
+        RouteGaurdService,
+        HttpInterceptorService,
+        { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }
     ],
     bootstrap: [AppComponent]
 })
