@@ -26,7 +26,6 @@ export class CustomBusyComponent implements OnInit {
         let textEl = document.getElementById('text');
         let count = 0;
         this.intervalHandler = window.setInterval(() => {
-            console.log(textEl.innerText);
             if ((count % 3) == 0) {
                 textEl.innerText = 'Please Wait .';
             } else {

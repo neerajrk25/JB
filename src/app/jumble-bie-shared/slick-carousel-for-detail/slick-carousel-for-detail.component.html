@@ -32,7 +32,7 @@
                      [attr.id]="'slide'+(i+1)"
                      *ngFor="let slide of slides;let i = index;">
                     <div class="img-overlay black">
-                        <img [src]="slide.imagePath">
+                        <img [src]="slide.downloadUri">
                     </div>
                     <div class="img-fade"></div>
                 </div>
@@ -76,33 +76,9 @@
                 <div class="slider property-gallery-pager">
                     <a class="property-gallery-thumb"
                        *ngFor="let slide of slides;let i = index;">
-                        <img [src]="slide.imagePath"
+                        <img [src]="slide.downloadUri"
                              alt="" />
                     </a>
-                    <!-- <a class="property-gallery-thumb">
-                        <img src="assets/images/1837x1206.png"
-                             alt="" />
-                    </a>
-                    <a class="property-gallery-thumb">
-                        <img src="assets/images/1837x1206.png"
-                             alt="" />
-                    </a>
-                    <a class="property-gallery-thumb">
-                        <img src="assets/images/1837x1206.png"
-                             alt="" />
-                    </a>
-                    <a class="property-gallery-thumb">
-                        <img src="assets/images/1837x1206.png"
-                             alt="" />
-                    </a>
-                    <a class="property-gallery-thumb">
-                        <img src="assets/images/1837x1206.png"
-                             alt="" />
-                    </a>
-                    <a class="property-gallery-thumb">
-                        <img src="assets/images/1837x1206.png"
-                             alt="" />
-                    </a> -->
                 </div>
             </div>
         </div>

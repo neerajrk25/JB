@@ -4,6 +4,7 @@ import { JbModalService } from '../../service/jb-modal.service';
 import { JbNotifyService } from '../../service/jb-notify.service';
 import { PropertyService } from '../property.service';
 import { Subscription } from 'rxjs';
+import { JbNotificationMessages } from 'src/app/jb-commons/notification-messages.enum';
 
 class Amenities {
     isPool = true;
@@ -137,6 +138,10 @@ export class AddPropertyComponent implements OnInit {
         //console.log(this.addPropertyForm, this.fileList);
         let formToSend = new FormData();
         //this.addPropertyForm.imagesToAdd = this.fileList;
+        if (this.fileList && this.fileList.length == 0) {
+            this.jbNotifyService.warningMessage('Please add images!');
+            return;
+        }
         for (let key in this.addPropertyForm) {
             let value = this.addPropertyForm[key];
             // if (typeof (this.addPropertyForm[key]) == 'object') {
@@ -158,7 +163,11 @@ export class AddPropertyComponent implements OnInit {
             }
         }
         this.addPropertySubscription = this.propertyService.addProperty(formToSend).subscribe(() => {
-        }, () => {
+            this.jbNotifyService.successMessage(JbNotificationMessages.PROPERTY_ADDED);
+        }, (error) => {
+            if (error) {
+                this.jbNotifyService.errorMessage(JbNotificationMessages.PROPERTY_ERROR);
+            }
         });
     }
 }

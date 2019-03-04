@@ -18,7 +18,8 @@
                  class="ui-tabs-panel ui-corner-bottom ui-widget-content">
                 <div class="filter-item">
                     <label>Property Type</label>
-                    <select name="property-type">
+                    <select name="property-type"
+                            [(ngModel)]="filter.propertyType">
                         <option value="">Any</option>
                         <option value="family-house">Family House</option>
                         <option value="apartment">Apartment</option>

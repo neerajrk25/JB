@@ -7,10 +7,11 @@ export class CommonService {
 
     private showBookNow = false;
 
-    private _filter: { min: number, max: number, page?: number } = {
+    private _filter: { min: number, max: number, propertyType?: string, page?: number } = {
         min: 1000,
         max: 5000,
-        page: 1
+        page: 1,
+        propertyType: 'any'
     };
 
     constructor() { }
@@ -30,6 +31,9 @@ export class CommonService {
     public set filter(value) {
         if (!value.page) {
             value.page = 1;
+        }
+        if (!value.propertyType || value.propertyType == "") {
+            value.propertyType = "any";
         }
         this._filter = value;
     }

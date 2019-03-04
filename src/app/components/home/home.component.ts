@@ -16,7 +16,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
     ];
     constructor(private commonService: CommonService, private router: Router) { }
 
-    filter: { price: number[] } = { price: [1000, 5000] };
+    filter: { price: number[], propertyType: string } = {
+        price: [1000, 5000],
+        propertyType: ""
+    };
 
     ngOnInit() {
         this.filter.price = [this.commonService.filter.min, this.commonService.filter.max];
@@ -33,7 +36,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     }
 
     navigateTo() {
-        this.commonService.filter = { min: this.filter.price[0], max: this.filter.price[1] };
+        this.commonService.filter = { min: this.filter.price[0], max: this.filter.price[1], propertyType: this.filter.propertyType };
         this.router.navigate(['/searchproperty']);
     }
 

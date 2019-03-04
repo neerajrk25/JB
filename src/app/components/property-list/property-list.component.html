@@ -1,4 +1,5 @@
-<section class="module no-padding-bottom filter filter-with-slider">
+<section class="module no-padding-bottom filter filter-with-slider"
+         [ngBusy]="[listSubscription]">
     <div class="container">
         <div class="tabs">
             <div class="filter-header"
@@ -14,8 +15,9 @@
                  class="ui-tabs-panel ui-corner-bottom ui-widget-content">
                 <div class="filter-item">
                     <label>Property Type</label>
-                    <select name="property-type">
-                        <option value="">Any</option>
+                    <select name="property-type"
+                            [(ngModel)]="filter.propertyType">
+                        <option value="any">Any</option>
                         <option value="family-house">Family House</option>
                         <option value="apartment">Apartment</option>
                         <option value="condo">Condo</option>
@@ -28,7 +30,7 @@
                 <div class="filter-item search-property-button">
                     <br />
                     <input type="button"
-                           (click)="navigateTo()"
+                           (click)="getProperty()"
                            class="button alt"
                            value="Find Properties" />
                 </div>
@@ -66,19 +68,19 @@
                  [ngClass]="{'cursor-not-allowed': property.isBooked}">
                 <div class="property shadow-hover"
                      [ngClass]="{'property-booked': property.isBooked}"
-                     (click)="viewPropertyDetails(i)">
+                     (click)="viewPropertyDetails(property.id)">
                     <a class="property-img">
                         <div class="img-fade"></div>
                         <div class="property-price">{{property.price | currency:'INR':'symbol'}}</div>
                         <div class="property-color-bar"></div>
-                        <img [src]="property.images.length ? property.images[0] : 'assets/images/1000x560.png'"
+                        <img [src]="property.images.length ? property.images[0].downloadUri : 'assets/images/1000x560.png'"
                              alt="No Image Available"
                              alt="" />
                     </a>
                     <div class="property-content">
                         <div class="property-title">
                             <h4>
-                                <a>{{property.description}}</a>
+                                <a>{{property.name}}</a>
                             </h4>
                             <p class="property-address">
                                 <i class="fa fa-map-marker icon"></i>{{property.address}}</p>
@@ -112,8 +114,10 @@
              *ngIf="properties.length">
             <div class="center">
                 <ul>
-                    <li>
-                        <a class="button small grey">
+                    <li [ngClass]="{'disabled-pagination': currentPage == 1}"
+                        [attr.title]="currentPage == 1 ? 'Disabled as no page' : 'Previous Page'">
+                        <a class="button small grey"
+                           (click)="setPage(currentPage-1)">
                             <i class="fa fa-angle-left"></i>
                         </a>
                     </li>
@@ -122,8 +126,10 @@
                         (click)="setPage(i+1)">
                         <a class="button small grey">{{i + 1}}</a>
                     </li>
-                    <li>
-                        <a class="button small grey">
+                    <li [ngClass]="{'disabled-pagination': currentPage == pages.length}"
+                        [attr.title]="currentPage == pages.length ? 'Disabled as no page' : 'Next Page'">
+                        <a class="button small grey"
+                           (click)="setPage(currentPage+1)">
                             <i class="fa fa-angle-right"></i>
                         </a>
                     </li>
