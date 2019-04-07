@@ -176,6 +176,19 @@ export class PropertyService {
         return this.http.get<Property>(getPropertyByIdUrl);
     }
 
+    getListOfDummyImages() {
+        return this.http.get<{
+        "format": string,
+        "width": number,
+        "height": number,
+        "filename": string,
+        "id": number,
+        "author": string,
+        "author_url": string,
+        "post_url": string
+    }[]>('https://picsum.photos/list');
+    }
+
     addProperty(addPropertyDTO) {
         let url = `${environment.baseUrl}/property/addProperty`;
         return this.http.post(url, addPropertyDTO);

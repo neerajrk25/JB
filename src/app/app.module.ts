@@ -16,6 +16,8 @@ import { AddPropertyComponent } from './components/add-property/add-property.com
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignInComponent } from './core/admin/sign-in/sign-in.component';
 import { HttpInterceptorService } from './service/http-interceptor.service';
+import { SlickModule } from 'ngx-slick';
+import { SlideshowModule } from 'ng-simple-slideshow';
 const appRoutes: Routes = [
     { path: 'home', component: HomeComponent },
     {
@@ -39,6 +41,8 @@ const appRoutes: Routes = [
         ReactiveFormsModule,
         FormsModule,
         HttpClientModule,
+        SlideshowModule,
+        SlickModule.forRoot(),
         RouterModule.forRoot(appRoutes, { useHash: true })
     ],
     declarations: [

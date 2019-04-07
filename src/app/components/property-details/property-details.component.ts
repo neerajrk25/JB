@@ -53,26 +53,33 @@ export class PropertyDetailsComponent implements OnInit {
                         "id": "8920dd9a-258a-4931-9f6e-40728e80806e",
                         "fileName": "IMG_0197.JPG",
                         "fileType": "image/jpeg",
-                        "downloadUri": "http://e341b11d.ngrok.io/property/downloadImage/IMG_0197.JPG",
+                        "downloadUri": "https://picsum.photos/200/300/?random",
                         "byteArrayString": null
                     },
                     {
                         "id": "099a87bd-623a-4d73-8065-e858d6859912",
                         "fileName": "IMG_0209.JPG",
                         "fileType": "image/jpeg",
-                        "downloadUri": "http://e341b11d.ngrok.io/property/downloadImage/IMG_0209.JPG",
+                        "downloadUri": "https://picsum.photos/200/300/?random",
                         "byteArrayString": null
                     },
                     {
                         "id": "bb79e46e-d214-4262-8088-882d81f3f291",
                         "fileName": "IMG_0210.JPG",
                         "fileType": "image/jpeg",
-                        "downloadUri": "http://e341b11d.ngrok.io/property/downloadImage/IMG_0210.JPG",
+                        "downloadUri": "https://picsum.photos/200/300/?random",
                         "byteArrayString": null
                     }
                 ],
                 "comments": []
             }
+            this.propertyDetails.images.forEach((value, index) => {
+                value.downloadUri = "https://picsum.photos/200/300?image=" + (index * 100);
+            });
+            this.slides = this.propertyDetails.images;
+            setTimeout(() => {
+                this.loadSlider = true;
+            }, 0);
         })
     }
 }

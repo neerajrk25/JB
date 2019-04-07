@@ -32,6 +32,83 @@
     }
 }
 
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .custom-slider-button {
+        background: white;
+        font-size: 20px;
+        color: #93a1ae;
+        width: 35px;
+        height: 35px;
+        text-align: center;
+        display: block;
+        /* padding-top: 2px; */
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 50px;
+        cursor: pointer;
+        position: relative;
+        z-index: 100;
+        transition: all 0.4s;
+    }
+
+    .property-gallery.full-width .slider-nav {
+        top: 50%;
+    }
+
+    .property-single-item .property-header.property-header-slider {
+        position: absolute;
+        padding: 0;
+        z-index: 10;
+        left: 30px;
+        right: 30px;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .custom-slider-button {
+        background: white;
+        font-size: 20px;
+        color: #93a1ae;
+        width: 35px;
+        height: 35px;
+        text-align: center;
+        display: block;
+        /* padding-top: 2px; */
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 50px;
+        cursor: pointer;
+        position: relative;
+        z-index: 100;
+        transition: all 0.4s;
+    }
+
+    .property-gallery.full-width .slider-nav {
+        top: 50%;
+    }
+
+    .property-single-item .property-header.property-header-slider {
+        position: absolute;
+        padding: 0;
+        z-index: 10;
+        left: 30px;
+        right: 30px;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .property-header-slider {
+        bottom: 2% !important;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {}
+
 .media-uploader-additional-img {
     position: relative;
     justify-content: center;
@@ -170,11 +247,13 @@
         width: 0;
         z-index: 100;
     }
+
     33.3333% {
         left: 0;
         width: 100%;
         z-index: 10;
     }
+
     to {
         left: 0;
         width: 100%;
