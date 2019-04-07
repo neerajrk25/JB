@@ -16,22 +16,24 @@ export class SlickCarouselForDetailComponent implements AfterViewInit {
     get imageUrlArray(): string[] {
         return this._imageUrlArray || [];
     }
-    // public set imageUrlArray(value: string[]) {
-    //     this._imageUrlArray = value;
-    // }
+    set imageUrlArray(value: string[]) {
+        this._imageUrlArray = value;
+    }
 
     get slides(): SlickSlide[] | imageFile[] {
         return this._slides;
     }
 
     @Input() set slides(value: SlickSlide[] | imageFile[]) {
-        let imageUrls = [];
-        value.forEach(slide => {
-            imageUrls.push(slide.downloadUri);
-        });
-        Object.assign(this._imageUrlArray, imageUrls);
-        debugger;
+        let imageUrls: string[] = [];
         this._slides = value;
+        // this._slides.forEach((slide) => {
+        //     imageUrls.push(slide.downloadUri);
+        // });
+        for (let i = 0; i < value.length; i++) {
+            imageUrls.push(value[i].downloadUri);
+        };
+        Object.assign(this._imageUrlArray, imageUrls);
     }
 
     private _loadSlider;
