@@ -1,8 +1,17 @@
 <slick-carousel-for-detail [slides]="slides"
                            [loadSlider]="loadSlider"></slick-carousel-for-detail>
-<section class="module">
+<section class="module details-module">
     <div class="container">
-
+        <div class="row">
+            <div class="property-single-tags">
+                <button type="button"
+                        class="property-tag button alt featured"
+                        (click)="bookNow()">Book Now</button>
+                <div class="property-price-single right">
+                    {{ '2000' | currency: 'INR'}}
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-lg-8 col-md-8">
 
@@ -63,7 +72,7 @@
             </div>
             <!-- end col -->
 
-            <div class="col-lg-4 col-md-4 sidebar abc sidebar-property-single">
+            <div class="col-lg-4 col-md-4 sidebar property-reviews-custom sidebar-property-single">
 
                 <div class="widget recent-posts">
                     <h4 style="margin-bottom: 10px;">
@@ -153,7 +162,7 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12">
-                                <a>. . .More Reviews</a>
+                                <a (click)="moreReviews()">. . .More Reviews</a>
                             </div>
                         </div>
 
@@ -200,7 +209,8 @@
                         Curabitur
                         lobortis nunc velit, et fermentum urna dapibus non. Vivamus magna lorem, elementum id gravida
                         ac,
-                        laoreet tristique augue. Maecenas dictum lacus eu nunc porttitor, ut hendrerit arcu efficitur.</p>
+                        laoreet tristique augue. Maecenas dictum lacus eu nunc porttitor, ut hendrerit arcu efficitur.
+                    </p>
 
                 </div>
                 <!-- end description -->
@@ -214,3 +224,92 @@
     </div>
     <!-- end container -->
 </section>
+<app-jb-modal [header]="'Booking Details'">
+    Please provide us with following details and we will get in touch with you!!
+    <form [formGroup]="detailsForm">
+        <div class="row">
+            <div class="col-sm-12 col-md-6"
+                 [ngClass]="{'has-error': !detailsForm.controls.name.valid && (detailsForm.controls.name.dirty || detailsForm.controls.name.touched)}">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text"
+                           class="form-control"
+                           formControlName="name"
+                           id="name"
+                           placeholder="First Name + Last Name">
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6"
+                 style="padding-bottom: 10px;"
+                 [ngClass]="{'has-error': !detailsForm.controls.mobileNumber.valid && (detailsForm.controls.mobileNumber.dirty || detailsForm.controls.mobileNumber.touched)}">
+                <div class="form-group">
+                    <label for="cell">Mobile Number</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            +91
+                        </span>
+                        <input type="text"
+                               class="form-control"
+                               formControlName="mobileNumber"
+                               id="cell"
+                               placeholder="Mobile Number">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6"
+                 [ngClass]="{'has-error': !detailsForm.controls.emailId.valid && (detailsForm.controls.emailId.dirty || detailsForm.controls.emailId.touched)}">
+                <div class="form-group">
+                    <label for="email">Email ID</label>
+                    <input type="email"
+                           class="form-control"
+                           formControlName="emailId"
+                           id="email"
+                           placeholder="Email ID">
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6"
+                 [ngClass]="{'has-error': !detailsForm.controls.bookingDate.valid && (detailsForm.controls.bookingDate.dirty || detailsForm.controls.bookingDate.touched)}">
+                <div class="form-group">
+                    <label for="date">Booking Date</label>
+                    <!-- <input type="text"
+                           class="form-control"
+                           formControlName="bookingDate"
+                           id="date"
+                           placeholder="Booking Date"> -->
+                    <div class="input-group date"
+                         #datetimepicker>
+                        <!-- <input type='text'
+                               class="form-control" /> -->
+                        <input type="text"
+                               class="form-control"
+                               [value]="bookingDate"
+                               [(ngModel)]="bookingDate"
+                               required
+                               [ngModelOptions]="{standalone: true}">
+                        <span class="input-group-addon">
+                            <span class="fa fa-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <jb-footer>
+        <div class="row">
+            <div class="col-sm-12">
+                <span class="button button-icon small form-prev"
+                      *ngIf="detailsForm.valid; else notValidBooking"
+                      [ngClass]="{'disabled-book-now': detailsForm.invalid}"
+                      (click)="submitDetails()"><i class="fa fa-bookmark"></i>
+                    Book</span>
+                <ng-template #notValidBooking>
+                    <span class="button button-icon small form-prev disabled-book-now"><i class="fa fa-bookmark"></i>
+                        Book</span>
+                </ng-template>
+                <span class="button button-icon small form-next"
+                      (click)="hideModal()"><i class="fa fa-times"></i>
+                    Cancel</span>
+            </div>
+        </div>
+    </jb-footer>
+</app-jb-modal>

@@ -16,8 +16,8 @@ import { AddPropertyComponent } from './components/add-property/add-property.com
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignInComponent } from './core/admin/sign-in/sign-in.component';
 import { HttpInterceptorService } from './service/http-interceptor.service';
-import { SlickModule } from 'ngx-slick';
 import { SlideshowModule } from 'ng-simple-slideshow';
+import { PropertyDetailsAllReviews } from './components/property-details/all-review/all-review.component';
 const appRoutes: Routes = [
     { path: 'home', component: HomeComponent },
     {
@@ -28,6 +28,7 @@ const appRoutes: Routes = [
     { path: 'searchproperty', component: PropertyListComponent },
     { path: 'viewproperty', component: PropertyDetailsComponent },
     { path: 'viewproperty/:propertyId', component: PropertyDetailsComponent },
+    { path: 'viewproperty/:propertyId/allreviews', component: PropertyDetailsAllReviews },
     { path: 'signin', component: SignInComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', redirectTo: '/home' }
@@ -42,7 +43,6 @@ const appRoutes: Routes = [
         FormsModule,
         HttpClientModule,
         SlideshowModule,
-        SlickModule.forRoot(),
         RouterModule.forRoot(appRoutes, { useHash: true })
     ],
     declarations: [

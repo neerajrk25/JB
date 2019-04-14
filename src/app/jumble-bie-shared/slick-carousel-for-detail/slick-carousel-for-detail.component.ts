@@ -1,10 +1,9 @@
-import { Component, OnInit, AfterViewInit, Input, NgZone, ViewChild } from '@angular/core';
+import { Component, AfterViewInit, Input, ViewChild } from '@angular/core';
 import { SlickSlide } from '../slick-slides.model';
 import { imageFile } from 'src/app/components/property.service';
-// import { SlideshowComponent } from 'ng-simple-slideshow';
-declare var $;
 
 @Component({
+    // tslint:disable-next-line: component-selector
     selector: 'slick-carousel-for-detail',
     templateUrl: './slick-carousel-for-detail.component.html',
     styleUrls: ['./slick-carousel-for-detail.component.css']
@@ -25,14 +24,11 @@ export class SlickCarouselForDetailComponent implements AfterViewInit {
     }
 
     @Input() set slides(value: SlickSlide[] | imageFile[]) {
-        let imageUrls: string[] = [];
+        const imageUrls: string[] = [];
         this._slides = value;
-        // this._slides.forEach((slide) => {
-        //     imageUrls.push(slide.downloadUri);
-        // });
         for (let i = 0; i < value.length; i++) {
             imageUrls.push(value[i].downloadUri);
-        };
+        }
         Object.assign(this._imageUrlArray, imageUrls);
     }
 
@@ -102,7 +98,7 @@ export class SlickCarouselForDetailComponent implements AfterViewInit {
 
     @ViewChild('slideshow') slideshowComponent: any;
 
-    constructor(private zone: NgZone) { }
+    constructor() { }
 
     ngAfterViewInit() {
 

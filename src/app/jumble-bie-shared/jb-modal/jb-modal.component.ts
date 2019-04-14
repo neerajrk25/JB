@@ -3,9 +3,11 @@ import { JbModalService } from '../../service/jb-modal.service';
 
 
 @Component({
+    // tslint:disable-next-line: component-selector
     selector: 'jb-footer',
     template: '<ng-content></ng-content>'
 })
+// tslint:disable-next-line: component-class-suffix
 export class JbFooter { }
 
 @Component({
@@ -15,10 +17,12 @@ export class JbFooter { }
 })
 export class JbModalComponent implements OnInit {
 
-    @Input('header') header: string = '';
+    @Input('header') header = '';
 
+    // tslint:disable-next-line: no-output-on-prefix
     @Output('onOpen') onOpen = new EventEmitter();
 
+    // tslint:disable-next-line: no-output-on-prefix
     @Output('onClose') onClose = new EventEmitter();
 
     @ContentChildren(JbFooter, { descendants: false }) footerFacet;

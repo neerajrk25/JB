@@ -7,7 +7,6 @@ import { JbModalComponent, JbFooter } from './jb-modal/jb-modal.component';
 import { RatingComponent } from './rating/rating.component';
 import { NgBusyModule, BusyConfig, BUSY_CONFIG_DEFAULTS } from 'ng-busy';
 import { CustomBusyComponent } from './custom-busy/custom-busy.component';
-import { SlickModule } from 'ngx-slick';
 import { SlideshowModule } from 'ng-simple-slideshow';
 const busyConfig: BusyConfig = {
     message: BUSY_CONFIG_DEFAULTS.message,
@@ -22,7 +21,6 @@ const busyConfig: BusyConfig = {
     imports: [
         CommonModule,
         SlideshowModule,
-        SlickModule.forRoot(),
         NgBusyModule.forRoot(busyConfig)
     ],
     declarations: [

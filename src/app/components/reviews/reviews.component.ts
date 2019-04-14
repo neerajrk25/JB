@@ -6,37 +6,42 @@ import { Component, OnInit, Input } from '@angular/core';
     styleUrls: ['./reviews.component.css']
 })
 export class ReviewsComponent implements OnInit {
+    @Input() isAdmin = true;
+
+    @Input() showDivider = false;
+
+    @Input() showAddBtn = false;
 
     private _reviews = [
         {
-            "id": "948324e1-55d3-4f46-86c2-570720dd0124",
-            "comment": "This site offers the best properties in town. Good stay :)",
-            "rating": 1,
-            "reviwerName": 'Neeraj Khandelwal'
+            'id': '948324e1-55d3-4f46-86c2-570720dd0124',
+            'comment': 'This site offers the best properties in town. Good stay :)',
+            'rating': 1,
+            'reviwerName': 'Neeraj Khandelwal'
         },
         {
-            "id": "04945184-fa44-476f-b747-b70923c41075",
-            "comment": "Nice",
-            "rating": 2,
-            "reviwerName": 'ABC'
+            'id': '04945184-fa44-476f-b747-b70923c41075',
+            'comment': 'Nice',
+            'rating': 2,
+            'reviwerName': 'ABC'
         },
         {
-            "id": "04945184-fa44-476f-b747-b70923c41075",
-            "comment": "Nice",
-            "rating": 2,
-            "reviwerName": 'ABC'
+            'id': '04945184-fa44-476f-b747-b70923c41075',
+            'comment': 'Nice',
+            'rating': 2,
+            'reviwerName': 'ABC'
         },
         {
-            "id": "04945184-fa44-476f-b747-b70923c41075",
-            "comment": "Nice",
-            "rating": 0,
-            "reviwerName": 'ABC'
+            'id': '04945184-fa44-476f-b747-b70923c41075',
+            'comment': 'Nice',
+            'rating': 0,
+            'reviwerName': 'ABC'
         },
         {
-            "id": "04945184-fa44-476f-b747-b70923c41075",
-            "comment": "Nice",
-            "rating": 2,
-            "reviwerName": 'ABC'
+            'id': '04945184-fa44-476f-b747-b70923c41075',
+            'comment': 'Nice',
+            'rating': 2,
+            'reviwerName': 'ABC'
         }
     ];
 
@@ -54,7 +59,7 @@ export class ReviewsComponent implements OnInit {
     }
 
     getRatingList(rating: number): boolean[] {
-        let isRating: boolean[] = [];
+        const isRating: boolean[] = [];
         for (let i = 0; i < 5; i++) {
             let value = false;
             if (i < rating) {

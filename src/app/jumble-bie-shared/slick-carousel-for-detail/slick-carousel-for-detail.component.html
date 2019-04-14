@@ -1,4 +1,4 @@
-<section class="subheader subheader-slider property-single-item"
+<!-- <section class="subheader subheader-slider property-single-item"
          *ngIf="false">
     <div class="property-gallery full-width">
         <div class="slider-wrap">
@@ -37,41 +37,6 @@
                     </div>
                     <div class="img-fade"></div>
                 </div>
-                <!-- <div class="slide"
-                     id="slide1">
-                    <div class="img-overlay black"></div>
-                    <div class="img-fade"></div>
-                </div>
-                <div class="slide"
-                     id="slide2">
-                    <div class="img-overlay black"></div>
-                    <div class="img-fade"></div>
-                </div>
-                <div class="slide"
-                     id="slide3">
-                    <div class="img-overlay black"></div>
-                    <div class="img-fade"></div>
-                </div>
-                <div class="slide"
-                     id="slide4">
-                    <div class="img-overlay black"></div>
-                    <div class="img-fade"></div>
-                </div>
-                <div class="slide"
-                     id="slide5">
-                    <div class="img-overlay black"></div>
-                    <div class="img-fade"></div>
-                </div>
-                <div class="slide"
-                     id="slide6">
-                    <div class="img-overlay black"></div>
-                    <div class="img-fade"></div>
-                </div>
-                <div class="slide"
-                     id="slide7">
-                    <div class="img-overlay black"></div>
-                    <div class="img-fade"></div>
-                </div> -->
             </div>
             <div class="container">
                 <div class="slider property-gallery-pager">
@@ -83,22 +48,12 @@
                 </div>
             </div>
         </div>
-        <!-- end slider wrap -->
     </div>
-    <!-- end property gallery -->
 </section>
 <section class="subheader subheader-slider property-single-item"
          *ngIf="false && loadSlider">
     <div class="property-gallery full-width">
         <div class="slider-wrap">
-            <!-- <div class="slider-nav slider-nav-property-gallery">
-                <span class="slider-prev">
-                    <i class="fa fa-angle-left"></i>
-                </span>
-                <span class="slider-next">
-                    <i class="fa fa-angle-right"></i>
-                </span>
-            </div> -->
             <div class="property-header property-header-slider">
                 <div class="container">
                     <div class="slide-counter"></div>
@@ -117,15 +72,6 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class=""> -->
-            <!-- <div class="slide"
-                     [attr.id]="'slide'+(i+1)"
-                     *ngFor="let slide of slides;let i = index;">
-                    <div class="img-overlay black">
-                        <img [src]="slide.downloadUri">
-                    </div>
-                    <div class="img-fade"></div>
-                </div> -->
             <ngx-slick class="carousel slider slider-property-gallery"
                        #slickModal="slick-modal"
                        [config]="gallerySlider"
@@ -137,35 +83,13 @@
                     <div class="img-overlay black">
                         <img [src]="slide.downloadUri">
                     </div>
-                    <!-- <div class="img-fade"></div> -->
                 </div>
             </ngx-slick>
-            <!-- </div> -->
             <div class="container">
-                <!-- <div class=""> -->
-                <!-- <a class="property-gallery-thumb"
-                           *ngFor="let slide of slides;let i = index;">
-                            <img [src]="slide.downloadUri"
-                                 alt="" />
-                        </a> -->
-                <!-- <ngx-slick class="carousel slider property-gallery-pager"
-                           #slickModal="slick-modal"
-                           [config]="slideConfig"
-                           (afterChange)="afterChange($event)">
-                    <a ngxSlickItem
-                       *ngFor="let slide of slides"
-                       class="slide property-gallery-thumb">
-                        <img [src]="slide.downloadUri"
-                             alt=""
-                             width="100%">
-                    </a>
-                </ngx-slick> -->
-                <!-- </div> -->
             </div>
         </div>
-        <!-- end slider wrap -->
     </div>
-</section>
+</section> -->
 <section class="subheader subheader-slider property-single-item"
          *ngIf="loadSlider">
     <div class="property-gallery full-width">
@@ -180,9 +104,8 @@
                     <i class="fa fa-angle-right"></i>
                 </span>
             </div>
-            <div class="property-header property-header-slider">
+            <!-- <div class="property-header property-header-slider">
                 <div class="container">
-                    <!-- <div class="slide-counter"></div> -->
                     <div class="property-title">
                         <div class="property-price-single right">$255,000
                             <span>Per Month</span>
@@ -197,7 +120,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <slideshow #slideshow
                        [minHeight]="'525px'"
                        [autoPlay]="true"

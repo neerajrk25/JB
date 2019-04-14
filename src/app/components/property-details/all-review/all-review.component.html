@@ -1,0 +1,23 @@
+<div class="module">
+    <div class="container">
+        <div class="col-sm-12 text-right">
+            <div class="back-btn add-review">
+                <button type="button"
+                        class="button add-review-btn"
+                        (click)="goBackToDetails()"><i class="fa fa-arrow-left"></i> Back</button>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="col-sm-12"
+                 style="background: white;">
+                <hr style="margin: 0;">
+            </div>
+            <div class="property-single-item"
+                 style="margin-bottom: 0;">
+                <app-reviews [isAdmin]="false"
+                             [showDivider]="true"
+                             [showAddBtn]="true"></app-reviews>
+            </div>
+        </div>
+    </div>
+</div>

@@ -19,24 +19,24 @@ class Amenities {
 }
 
 class AddProperty {
-    "name" = "asdasd";
-    "address" = "asda";
-    "price" = 12;
-    "rooms" = 12;
-    "description" = "asd";
-    "capacity" = 123;
-    "amenities" = new Amenities();
-    "commentsToAdd" = [{ "rating": 1, "comment": "good" }, { "rating": 2, "comment": "Nice" }];
-    "imagesToAdd" = [];
-    "status" = 'ACTIVE';
-    "type" = 'apartment';
+    name = 'asdasd';
+    address = 'asda';
+    price = 12;
+    rooms = 12;
+    description = 'asd';
+    capacity = 123;
+    amenities = new Amenities();
+    commentsToAdd = [{ 'rating': 1, 'comment': 'good' }, { 'rating': 2, 'comment': 'Nice' }];
+    imagesToAdd = [];
+    'status' = 'ACTIVE';
+    'type' = 'apartment';
 }
 
 class DropdownData {
-    "propertyTypes" = [
+    'propertyTypes' = [
         { label: 'Apartment', value: 'apartment' }
     ];
-    "amenities" = [
+    'amenities' = [
         { label: 'Swimming Pool', value: 'isPool' },
         { label: 'Air Conditioning', value: 'isAirConditioner' },
         { label: 'Operative Kitchen', value: 'isOperativeKitchen' },
@@ -46,7 +46,7 @@ class DropdownData {
         { label: 'Fridge', value: 'isFridge' },
         { label: 'Geyser', value: 'isGeyser' },
         { label: 'Chef', value: 'isChef' }
-    ]
+    ];
 }
 
 @Component({
@@ -61,11 +61,11 @@ export class AddPropertyComponent implements OnInit {
     addPropertySubscription: Subscription;
 
     fileList: File[] = [];
-    isModalVisible: boolean = false;
+    isModalVisible = false;
 
     selectedFile: any = {};
 
-    amenities
+    amenities;
 
     @ViewChild('fileInput') fileInput: ElementRef;
 
@@ -77,7 +77,7 @@ export class AddPropertyComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        //this.jbNotifyService.alertMessage('I am ready to rock');
+        // this.jbNotifyService.alertMessage('I am ready to rock');
     }
 
     onClickNext() {
@@ -93,17 +93,17 @@ export class AddPropertyComponent implements OnInit {
     }
 
     onFileSelect(event) {
-        let files: any[] = event.dataTransfer ? event.dataTransfer.files : event.target.files;
-        //this.fileList = Object.assign([]);
+        const files: any[] = event.dataTransfer ? event.dataTransfer.files : event.target.files;
+        // this.fileList = Object.assign([]);
         for (let i = 0; i < files.length; i++) {
-            let file = files[i];
+            const file = files[i];
             if (this.validate(file)) {
                 if (this.isImage(file)) {
                     file.objectURL = this.sanitizer.bypassSecurityTrustUrl((window.URL.createObjectURL(files[i])));
                 }
                 this.fileList.push(files[i]);
             } else {
-                let warningMessage = `${file.name} is not a valid file!`;
+                const warningMessage = `${file.name} is not a valid file!`;
                 this.jbNotifyService.warningMessage(warningMessage);
             }
         }
@@ -135,27 +135,28 @@ export class AddPropertyComponent implements OnInit {
     }
 
     submitProperty() {
-        //console.log(this.addPropertyForm, this.fileList);
-        let formToSend = new FormData();
-        //this.addPropertyForm.imagesToAdd = this.fileList;
-        if (this.fileList && this.fileList.length == 0) {
+        // console.log(this.addPropertyForm, this.fileList);
+        const formToSend = new FormData();
+        // this.addPropertyForm.imagesToAdd = this.fileList;
+        if (this.fileList && this.fileList.length === 0) {
             this.jbNotifyService.warningMessage('Please add images!');
             return;
         }
-        for (let key in this.addPropertyForm) {
-            let value = this.addPropertyForm[key];
+        // tslint:disable-next-line: forin
+        for (const key in this.addPropertyForm) {
+            const value = this.addPropertyForm[key];
             // if (typeof (this.addPropertyForm[key]) == 'object') {
             //     value = JSON.stringify(this.addPropertyForm[key]);
             // }
-            if (typeof (this.addPropertyForm[key]) == 'object' && key == 'imagesToAdd') {
+            if (typeof (this.addPropertyForm[key]) === 'object' && key === 'imagesToAdd') {
                 for (let j = 0; j < this.fileList.length; j++) {
-                    if (j == 0) {
+                    if (j === 0) {
                         formToSend.set('imagesToAdd', this.fileList[j]);
                     } else {
                         formToSend.append('imagesToAdd', this.fileList[j], this.fileList[j].name);
                     }
                 }
-            } else if (typeof (this.addPropertyForm[key]) == 'object' && key !== 'imagesToAdd') {
+            } else if (typeof (this.addPropertyForm[key]) === 'object' && key !== 'imagesToAdd') {
                 formToSend.set(key, JSON.stringify(this.addPropertyForm[key]));
             } else {
                 formToSend.set(key, value);

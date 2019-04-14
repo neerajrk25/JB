@@ -15,14 +15,14 @@ export class SignInComponent implements OnInit {
 
     ngOnInit() {
         this.signinForm = new FormGroup({
-            "email": new FormControl(null, Validators.required),
-            "password": new FormControl(null, Validators.required)
-        })
+            'email': new FormControl(null, Validators.required),
+            'password': new FormControl(null, Validators.required)
+        });
     }
 
     login() {
-        localStorage.setItem('token', "1");
-        this.router.navigate(["admin/addproperty"]);
+        localStorage.setItem('token', '1');
+        this.router.navigate(['admin/addproperty']);
     }
 
 }

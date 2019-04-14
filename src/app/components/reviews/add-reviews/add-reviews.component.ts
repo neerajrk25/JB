@@ -2,11 +2,12 @@ import { Component, OnInit, Input } from '@angular/core';
 
 class Review {
     comment: string = null;
-    rating: number = 0;
+    rating = 0;
     name: string = null;
 }
 
 @Component({
+    // tslint:disable-next-line: component-selector
     selector: 'jb-add-reviews',
     templateUrl: './add-reviews.component.html',
     styleUrls: ['./add-reviews.component.css']

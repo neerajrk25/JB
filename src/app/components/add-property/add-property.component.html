@@ -267,7 +267,8 @@
                                                         </td>
                                                         <td>
                                                             <span title="Delete File"
-                                                                  (click)="deleteFile(file, index)"><i class="fa fa-trash"></i></span>
+                                                                  (click)="deleteFile(file, index)"><i
+                                                                   class="fa fa-trash"></i></span>
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -401,13 +402,16 @@
                                 </td>
                             </tr>
                         </table>
-                        <app-reviews></app-reviews>
+                        <app-reviews [isAdmin]="true"
+                                     [showDivider]="true"
+                                     [showAddBtn]="false"></app-reviews>
 
                         <div class="row">
                             <div class="col-sm-12 col-md-9 center">
                                 <button type="button"
                                         (click)="submitProperty()"
-                                        class="button submit-btn button-icon large alt"><i class="fa fa-angle-right"></i>
+                                        class="button submit-btn button-icon large alt"><i
+                                       class="fa fa-angle-right"></i>
                                     Submit
                                     Property</button>
                             </div>

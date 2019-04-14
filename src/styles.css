@@ -30,6 +30,13 @@
     .form-block label {
         top: -19px;
     }
+
+    .property-reviews-custom {
+        margin-bottom: 45px;
+        background: white;
+        padding: 15px 20px;
+        margin: 0 15px 45px 15px;
+    }
 }
 
 /* Extra small devices (phones, 600px and down) */
@@ -61,6 +68,13 @@
         z-index: 10;
         left: 30px;
         right: 30px;
+    }
+
+    .property-reviews-custom {
+        margin-bottom: 45px;
+        background: white;
+        padding: 15px 20px;
+        margin: 0 15px 45px 15px;
     }
 }
 
@@ -94,6 +108,13 @@
         left: 30px;
         right: 30px;
     }
+
+    .property-reviews-custom {
+        margin-bottom: 45px;
+        background: white;
+        padding: 15px 20px;
+        margin: 0 15px 45px 15px;
+    }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -101,13 +122,51 @@
     .property-header-slider {
         bottom: 2% !important;
     }
+
+    .property-reviews-custom {
+        margin-bottom: 45px;
+        background: white;
+        padding: 15px 20px;
+        margin: 0 15px 45px 15px;
+    }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {}
+@media only screen and (min-width: 992px) {
+    .property-reviews-custom {
+        margin-bottom: 45px;
+        background: white;
+        padding: 15px 20px;
+        margin: 0 0 45px 0;
+    }
+}
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {}
+@media only screen and (min-width: 1200px) {
+    .property-reviews-custom {
+        margin-bottom: 45px;
+        background: white;
+        padding: 15px 20px;
+        margin: 0 0 45px 0;
+    }
+}
+
+.module.details-module {
+    padding-top: 0;
+}
+
+.module.details-module .property-single-tags {
+    padding: 20px 15px;
+}
+
+.module.details-module .property-price-single {
+    margin-top: -10px;
+}
+
+.button.disabled-book-now {
+    background-color: #96d0f7;
+    cursor: no-drop;
+}
 
 .media-uploader-additional-img {
     position: relative;

@@ -27,10 +27,13 @@
                             "./node_modules/font-awesome/css/font-awesome.css",
                             "./node_modules/alertifyjs/build/css/alertify.min.css",
                             "./node_modules/ng-busy/src/style/busy.css",
-                            "./node_modules/alertifyjs/build/css/themes/default.min.css"
+                            "./node_modules/alertifyjs/build/css/themes/default.min.css",
+                            "./node_modules/bootstrap-datetime-picker/css/bootstrap-datetimepicker.min.css"
                         ],
                         "scripts": [
-                            "./node_modules/alertifyjs/build/alertify.min.js"
+                            "./node_modules/alertifyjs/build/alertify.min.js",
+                            "./node_modules/moment/moment.js",
+                            "./node_modules/bootstrap-datetime-picker/js/bootstrap-datetimepicker.min.js"
                         ]
                     },
                     "configurations": {

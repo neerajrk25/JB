@@ -1,4 +1,5 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
+declare var $;
 
 @Injectable({ providedIn: 'root' })
 export class JbModalService {
@@ -19,12 +20,24 @@ export class JbModalService {
         this._isModalVisible = value;
     }
 
+    onOpen: Function;
+
+    onClose: Function;
+
     openModal() {
-        this.modalElement.style.display = "block";
+        this.modalElement.style.display = 'block';
+        $('body').addClass('modal-open');
+        if (this.onOpen) {
+            this.onOpen();
+        }
     }
 
     closeModal() {
-        this.modalElement.style.display = "none";
+        this.modalElement.style.display = 'none';
+        $('body').removeClass('modal-open');
+        if (this.onClose) {
+            this.onClose();
+        }
     }
 
     windowClick(event) {
@@ -39,7 +52,7 @@ export class JbModalService {
 
     bindEvents() {
         this.modalElement = document.getElementById('myModal');
-        this.spanElement = document.getElementById("close");
+        this.spanElement = document.getElementById('close');
         window.addEventListener('click', this.windowClick.bind(this));
         this.spanElement.addEventListener('click', this.spanClick.bind(this));
         this.openModal();
